@@ -1,0 +1,53 @@
+<div class="adDetails">
+    <div class="row" (click)="findMovieStart(AdDetails.movieID)">
+      <div class="col-md-5">
+        <img class="img-responsive" src="https://searchengineland.com/figz/wp-content/seloads/2015/08/movie-film-video-production-ss-1920-800x450.jpg"/>
+      </div>
+  
+      <div class="col-md-7 boxPad" >
+        <div class="row">
+          <h2>[[ ReviewedMovie.movieID ]]</h2>
+        </div>
+        <div class="row">
+          <div class="col-md-9 descPad">
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+          </div>
+          <div class="col-md-3 text-center">
+            <h2>[[ ReviewedMovie.price ]]</h2>
+            <br/>
+            <br/>
+            <button class="btn btn-success">Bid</button>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  
+  <div class="adDetails">
+  <div *ngIf="searchBool && validMovie" id="movieOutput" class="movieOutput">
+      <div class="row">
+        <div class="col-md-5">
+          <img class="img-responsive" src="{{film.Poster}}"/>
+        </div>
+        <div class="col-md-7 boxPad">
+  
+            <div class="row">
+                <h2>[[ film.Title+" ("+film.Year+")" ]]</h2>
+              </div>
+              <div class="row">              
+                <h5 class="grayText">[[ "Director: "+film.Director ]]</h5></div>
+                <div class="row">
+                <h5 class="grayText">[[ "Rated: "+film.Rated ]]</h5></div>
+              <div class="row">
+                <div class="col-md-9 descPad">
+                  <p>[[ film.Plot ]]</p>
+                </div>
+                <div class="col-md-3 text-center">
+                  <h2>[[ ReviewedMovie.price ]]</h2>
+                </div>
+              </div>
+        </div>
+      </div>
+    </div>
+  </div>
