@@ -7,7 +7,21 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { FooterComponent } from './footer/footer.component';
 import { ReviewedMovieListComponent } from './reviewed-movie-list/reviewed-movie-list.component';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
+import { NewMovieReviewComponent } from './new-movie-review/new-movie-review.component';
 
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { RouterModule, Routes } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
+import { HomeComponent } from './home/home.component';
+
+
+const routes: Routes = [
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent },
+  { path: 'newreview', component: NewMovieReviewComponent}
+
+]
 
 @NgModule({
   declarations: [
@@ -15,12 +29,17 @@ import { MovieDetailsComponent } from './movie-details/movie-details.component';
     NavBarComponent,
     FooterComponent,
     ReviewedMovieListComponent,
-    MovieDetailsComponent
+    MovieDetailsComponent,
+    NewMovieReviewComponent,
+    HomeComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    RouterModule.forRoot(routes)
   ],
-  providers: [],
+  providers: [
+    { provide: LocationStrategy, useClass: HashLocationStrategy }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

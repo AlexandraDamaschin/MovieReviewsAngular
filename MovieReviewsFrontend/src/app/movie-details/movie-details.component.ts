@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { MovieDetails } from './movie-details.model';
 import { Movie } from './movie';
+import { MovieService } from '../movie.service';
 
 @Component({
   selector: 'app-movie-details',
