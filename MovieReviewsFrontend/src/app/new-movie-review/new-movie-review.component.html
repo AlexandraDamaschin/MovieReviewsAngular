@@ -1,7 +1,7 @@
 <form>
   <div class="row">
       <div class="col-md-9">
-        <input #movieName type="text" class="form-control" style="border-radius: 2px; font-size: 20px; text-align: center;" placeholder="Search for a movie to review"/>
+        <input #movieName type="text" class="form-control" style="border-radius: 2px; font-size: 20px; text-align: center;" placeholder="Search for a new movie to review"/>
       </div>
       <div class="col-md-3">
         <button class="btn btn-success btn-block btnScale"  style="border-radius: 2px; font-size: 20px;" (click)="findMovieStart(movieName.value)">Find Movie</button>
@@ -26,4 +26,20 @@
       <h6 style="display: none;" #filmID>{{film.imdbID}}</h6>
     </div>
   </div>
+</div>
+
+<div id="darkBackground" *ngIf="popupShow" (click)="closePopup()"></div>
+<div id="popup" *ngIf="popupShow">
+  <h1 id="closePopupX" (click)="closePopup()">X</h1>
+  <div id="prevComments">
+    <h3>What others are saying about {{film.Title}}</h3>
+    <ul>
+      <li>"Great movie!"</li>
+      <li>"Best movie I've ever seen!"</li>
+      <li>"Boring, would not recommend.."</li>
+      <li>"It's okay-ish I guess :/"</li>
+    </ul>
+  </div>
+  <input type="text" class="form-control" placeholder="Write Review.." *ngIf="popupShow"/>
+  <button (click)="submitReview()">Submit</button>        
 </div>

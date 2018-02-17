@@ -14,6 +14,7 @@ export class NewMovieReviewComponent implements OnInit {
   public divShow: boolean = false;
   public searchBool: boolean = false;
   public validMovie: boolean = false;
+  public popupShow: boolean = false;
   resultUser: boolean = false;
 
   // title = 'Movie List';
@@ -34,13 +35,20 @@ export class NewMovieReviewComponent implements OnInit {
     this.selMovieTitle = smt;
     this.selMovieID = id;
 
+    this.popupShow = true;
+
     console.log("Movie: " + this.selMovieTitle + " - imdbID: " + this.selMovieID);
     // this.divShow = !this.divShow;
-    alert("Movie - " + this.film.Title + " \nimdbID - " + this.film.imdbID);
+    // alert("Movie - " + this.film.Title + " \nimdbID - " + this.film.imdbID);
   }
 
-  toggleDisplay() {
-    this.divShow = !this.divShow;  
+  // toggleDisplay() {
+  //   this.divShow = !this.divShow;  
+  // }
+
+  closePopup() {
+    this.popupShow = false;
+
   }
 
   findMovieStart(x) {
