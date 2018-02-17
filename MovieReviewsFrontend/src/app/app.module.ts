@@ -14,12 +14,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { HomeComponent } from './home/home.component';
+import { MovieReviewComponent } from './movie-review/movie-review.component';
 
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
-  { path: 'newreview', component: NewMovieReviewComponent}
+  { path: 'newreview', component: NewMovieReviewComponent},
+  { path: 'moviereview', component: MovieReviewComponent}
 
 ]
 
@@ -31,11 +33,13 @@ const routes: Routes = [
     ReviewedMovieListComponent,
     MovieDetailsComponent,
     NewMovieReviewComponent,
-    HomeComponent
+    HomeComponent,
+    MovieReviewComponent
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    HttpModule
   ],
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy }

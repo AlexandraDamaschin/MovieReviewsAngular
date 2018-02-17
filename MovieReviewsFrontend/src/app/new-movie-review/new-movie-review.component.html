@@ -1,10 +1,29 @@
 <form>
   <div class="row">
       <div class="col-md-9">
-        <input #movieName type="text" class="form-control" style="border-radius: 2px; font-size: 20px; text-align: center;" placeholder="Search for the movie you wish to sell.. eg Titanic?"/>
+        <input #movieName type="text" class="form-control" style="border-radius: 2px; font-size: 20px; text-align: center;" placeholder="Search for a movie to review"/>
       </div>
       <div class="col-md-3">
         <button class="btn btn-success btn-block btnScale"  style="border-radius: 2px; font-size: 20px;" (click)="findMovieStart(movieName.value)">Find Movie</button>
       </div>
   </div> 
 </form>
+
+<br>
+
+<div *ngIf="searchBool && validMovie" id="movieOutput" class="movieOutput" (click)="toggleDisplay()">
+  <div class="row">
+    <div class="col-md-4"><img class="img-responsive" src="{{film.Poster}}"/></div>
+    <div class="col-md-8" style="padding-top: 20px;">
+      <h2 #filmTitle>{{film.Title+" ("+film.Year+")"}}</h2>
+      <h5 class="grayText">{{"Director: "+film.Director}}</h5>
+      <h5 class="grayText">{{"Rated: "+film.Rated}}</h5>
+      <hr/>
+      <p>{{film.Plot}}</p> 
+      <br/>
+      <br/>
+      <h6 class="grayText actors">{{"Actors: "+film.Actors}}</h6>
+      <h6 style="display: none;" #filmID>{{film.imdbID}}</h6>
+    </div>
+  </div>
+</div>
