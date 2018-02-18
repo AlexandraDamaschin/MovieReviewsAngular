@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MovieDetails } from '../movie-details/movie-details.model';
-import { Movie } from '../movie-details/movie';
+import { MovieDetails } from '../../models/movie-details.model';
+import { Movie } from '../../models/movie';
 
 @Component({
   selector: 'app-reviewed-movie-list',
