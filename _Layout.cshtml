@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="google-signin-client_id" content="937448718186-k53n2h1jodv0453s1ovmc81k2moa9cv6.apps.googleusercontent.com">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+  <div id="profileinfo"></div>                       
+ <div class="g-signin2" data-onsuccess="onSignIn"></div>
+                 
+    <script>
+        function onSignIn(googleUser) {
+            var profile = googleUser.getBasicProfile();
+            document.getElementById("profileinfo").innerHTML = profile.getName() + "<br>"
+                + "<a href='mailto:'" + profile.getEmail() + "'>" + profile.getEmail() + "</a>" + "<br>"
+                + "<img src='" + profile.getImageUrl() + "'/>";
+        }
+   
+    </script>
+    <a href="#" onclick="signOut();">Sign out</a>
+    <script>
+  function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+      document.getElementById('profileinfo').innerHTML = "";
+    });
+  }
+    </script>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Keith's log in attempt</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
