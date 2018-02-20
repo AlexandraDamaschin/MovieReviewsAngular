@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { MovieService } from '../../services/movie.service';
+import { CustomApiService } from '../../services/custom-api.service';
 import { Movie } from '../../models/movie';
+import { MovieReview } from '../../models/movie-review';
 import { HttpModule } from '@angular/http';
 
 @Component({
   selector: 'app-new-movie-review',
-  providers: [MovieService],
+  providers: [MovieService, CustomApiService],
   templateUrl: './new-movie-review.component.html',
   styleUrls: ['./new-movie-review.component.css']
 })
@@ -19,6 +21,9 @@ export class NewMovieReviewComponent implements OnInit {
 
   // title = 'Movie List';
   film: Movie;
+  filmReview: MovieReview;
+  filmReviewBool: boolean = false;;
+
   errorMessage: string;
   movieName: string;
 
@@ -26,10 +31,18 @@ export class NewMovieReviewComponent implements OnInit {
   selMovieID: string;
   selMoviePrice: string;
 
-  constructor(private _movieService: MovieService) {
+  constructor(private _movieService: MovieService, private _customApiService: CustomApiService) {
 
-   }
+  }
   // constructor(){}
+
+customApiTest(){
+  let self = this;
+  self._customApiService.getReviews().subscribe(response => this.filmReview = response, error => this.errorMessage = <any> error);
+  // console.log("****************************\n" + this.filmReview.reviewComment + "\n****************************");
+ console.log("***** Method finished. *****");
+ this.filmReviewBool = true;
+}
 
   movieSelected(smt, id) {
     this.selMovieTitle = smt;

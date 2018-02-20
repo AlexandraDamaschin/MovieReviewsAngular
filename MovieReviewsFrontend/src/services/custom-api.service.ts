@@ -3,23 +3,24 @@ import { Movie } from '../models/movie';
 import 'rxjs/Rx';
 import {Observable}     from 'rxjs/Observable';
 import {Http, Response} from '@angular/http';
+import { MovieReview } from '../models/movie-review';
 @Injectable()
 export class CustomApiService {
 
-  private urlBase: string = "http://www.omdbapi.com/?apikey=60d77be4&plot=long&t=";
-    private urlID: string = "http://www.omdbapi.com/?apikey=60d77be4&plot=long&i=";
+    private urlBase: string = "http://localhost:56580/api/review";
+    private urlID: string = "http://localhost:56580/api/review";
 
     constructor(private http: Http) {}  
        
-    getMovies(x): Observable < Movie > {  
-        return this.http.get(this.urlBase + x).map((response: Response) => {  
-            return <Movie > response.json()  
+    getReviews(): Observable < MovieReview > {  
+        return this.http.get(this.urlBase).map((response: Response) => {  
+            return <MovieReview > response.json()  
         }).catch(this.handleError);  
     }  
 
-    getMovieID(id): Observable < Movie > {  
+    getReviewID(id): Observable < MovieReview > {  
         return this.http.get(this.urlID + id).map((response: Response) => {  
-            return <Movie > response.json()  
+            return <MovieReview > response.json()  
         }).catch(this.handleError);  
     }  
     
