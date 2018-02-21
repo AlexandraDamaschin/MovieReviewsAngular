@@ -12,7 +12,7 @@ import { HttpModule } from '@angular/http';
   styleUrls: ['./new-movie-review.component.css']
 })
 export class NewMovieReviewComponent implements OnInit {
-  
+
   public divShow: boolean = false;
   public searchBool: boolean = false;
   public validMovie: boolean = false;
@@ -22,7 +22,7 @@ export class NewMovieReviewComponent implements OnInit {
   // title = 'Movie List';
   film: Movie;
   filmReview: MovieReview;
-  filmReviewBool: boolean = false;;
+  filmReviewBool: boolean = false;
 
   errorMessage: string;
   movieName: string;
@@ -31,18 +31,22 @@ export class NewMovieReviewComponent implements OnInit {
   selMovieID: string;
   selMoviePrice: string;
 
-  constructor(private _movieService: MovieService, private _customApiService: CustomApiService) {
+  constructor(
+    private _movieService: MovieService,
+    private _customApiService: CustomApiService
+  ) {
 
   }
   // constructor(){}
 
-customApiTest(){
-  let self = this;
-  self._customApiService.getReviews().subscribe(response => this.filmReview = response, error => this.errorMessage = <any> error);
-  // console.log("****************************\n" + this.filmReview.reviewComment + "\n****************************");
- console.log("***** Method finished. *****");
- this.filmReviewBool = true;
-}
+  customApiTest() {
+    let self = this;
+    self._customApiService.getReviews()
+      .subscribe(response => this.filmReview = response, error => this.errorMessage = <any>error);
+    // console.log("****************************\n" + this.filmReview.reviewComment + "\n****************************");
+    console.log("***** Method finished. *****");
+    this.filmReviewBool = true;
+  }
 
   movieSelected(smt, id) {
     this.selMovieTitle = smt;
@@ -69,17 +73,17 @@ customApiTest(){
     console.log("Movie searched ==> " + this.movieName);
     let self = this;
 
-    if(this.movieName != "") {
-      self._movieService.getMovies(this.movieName).subscribe(response => this.film = response, error => this.errorMessage = <any> error);
+    if (this.movieName != "") {
+      self._movieService.getMovies(this.movieName).subscribe(response => this.film = response, error => this.errorMessage = <any>error);
       this.searchBool = true;
       this.validMovie = true;
       return false;
-    } else 
+    } else
       console.log("No movie!");
 
     // console.log("Search clicked.. --> " + x);
   }
 
-  ngOnInit(): void {   }
+  ngOnInit(): void { }
 
 }
