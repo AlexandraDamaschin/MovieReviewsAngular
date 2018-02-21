@@ -15,6 +15,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { HomeComponent } from './home/home.component';
 import { MovieReviewComponent } from './movie-review/movie-review.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 
 const routes: Routes = [
@@ -34,7 +36,9 @@ const routes: Routes = [
     MovieDetailsComponent,
     NewMovieReviewComponent,
     HomeComponent,
-    MovieReviewComponent
+    MovieReviewComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
