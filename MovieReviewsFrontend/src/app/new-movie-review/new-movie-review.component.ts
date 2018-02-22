@@ -19,9 +19,8 @@ export class NewMovieReviewComponent implements OnInit {
   public popupShow: boolean = false;
   resultUser: boolean = false;
 
-  // title = 'Movie List';
   film: Movie;
-  filmReview: MovieReview;
+  filmReviews: MovieReview;
   filmReviewBool: boolean = false;
 
   errorMessage: string;
@@ -32,40 +31,30 @@ export class NewMovieReviewComponent implements OnInit {
   selMoviePrice: string;
 
   constructor(
-    private _movieService: MovieService,
-    private _customApiService: CustomApiService
-  ) {
+    private _movieService: MovieService, 
+    private _customApiService: CustomApiService) { }
 
-  }
-  // constructor(){}
 
-  customApiTest() {
+  callCustomAPI() {
     let self = this;
     self._customApiService.getReviews()
-      .subscribe(response => this.filmReview = response, error => this.errorMessage = <any>error);
-    // console.log("****************************\n" + this.filmReview.reviewComment + "\n****************************");
+      .subscribe(response => this.filmReviews = response, error => this.errorMessage = <any>error);
     console.log("***** Method finished. *****");
     this.filmReviewBool = true;
+    console.log("*** Comment: " + this.filmReviews[0].reviewComment);
   }
 
   movieSelected(smt, id) {
     this.selMovieTitle = smt;
     this.selMovieID = id;
-
     this.popupShow = true;
-
     console.log("Movie: " + this.selMovieTitle + " - imdbID: " + this.selMovieID);
-    // this.divShow = !this.divShow;
-    // alert("Movie - " + this.film.Title + " \nimdbID - " + this.film.imdbID);
-  }
 
-  // toggleDisplay() {
-  //   this.divShow = !this.divShow;  
-  // }
+    this.callCustomAPI();
+  }
 
   closePopup() {
     this.popupShow = false;
-
   }
 
   findMovieStart(x) {
@@ -78,10 +67,9 @@ export class NewMovieReviewComponent implements OnInit {
       this.searchBool = true;
       this.validMovie = true;
       return false;
-    } else
+    } 
+    else
       console.log("No movie!");
-
-    // console.log("Search clicked.. --> " + x);
   }
 
   ngOnInit(): void { }
