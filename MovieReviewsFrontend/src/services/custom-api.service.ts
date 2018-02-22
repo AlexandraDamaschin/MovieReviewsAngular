@@ -11,17 +11,12 @@ export class CustomApiService {
 
     private urlBase: string = StringList.CUSTOM_API_BASE;
 
-    constructor(
-        private http: Http
-    ) { }
+    constructor(private http: Http) { }
 
     getReviews(): Observable<MovieReview> {
-        return this.http
-            .get(this.urlBase)
-            .map((response: Response) => {
-                return <MovieReview>response.json()
-            })
-            .catch(this.handleError);
+        return this.http.get(this.urlBase).map((response: Response) => {
+            return <MovieReview>response.json()
+        }).catch(this.handleError);
     }
 
     // getReviewID(id): Observable<MovieReview> {
@@ -37,5 +32,4 @@ export class CustomApiService {
         console.log(errorResponse.statusText);
         return Observable.throw(errorResponse.json().error || "Server error");
     }
-
 }
