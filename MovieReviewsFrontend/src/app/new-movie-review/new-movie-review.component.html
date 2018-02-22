@@ -11,12 +11,13 @@
 
 <br>
 
-<button (click)="callCustomAPI()">Test Custom API</button>
+<button (click)="callCustomAPI()">Custom API Call (Test)</button>
 <h1 *ngIf="filmReviewBool"> ==>
-  <!-- [[[ {{filmReview.reviewComment}} ]]] -->
-  <!-- <ul>
-      <li *ngFor="let rev of filmReviews">{{rev.reviewComment}}</li>
-    </ul> -->
+  <ul>
+    <li *ngFor="let rev of filmReviews">{{rev.reviewComment}}</li>
+  </ul>
+
+  <==
 </h1>
 
 <div *ngIf="searchBool && validMovie" class="movieOutput" (click)="movieSelected(filmTitle, filmID)">
