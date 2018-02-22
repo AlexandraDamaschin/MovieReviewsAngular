@@ -39,8 +39,8 @@ export class NewMovieReviewComponent implements OnInit {
     self._customApiService.getReviews()
       .subscribe(response => this.filmReview = response, error => this.errorMessage = <any>error);
     console.log("***** Method finished. *****");
-    console.log("*** Comment: " + this.filmReview.reviewComment);
     this.filmReviewBool = true;
+    console.log("*** Comment: " + this.filmReview[0].reviewComment);
   }
 
   movieSelected(smt, id) {
