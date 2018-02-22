@@ -3,11 +3,13 @@ import { Movie } from '../models/movie';
 import 'rxjs/Rx';
 import { Observable }     from 'rxjs/Observable';
 import { Http, Response } from '@angular/http';
+import { StringList } from './strings';
+
 @Injectable()
 export class MovieService {
 
-    private urlBase: string = "http://www.omdbapi.com/?apikey=60d77be4&plot=long&t=";
-    private urlID: string = "http://www.omdbapi.com/?apikey=60d77be4&plot=long&i=";
+    private urlBase: string = StringList.OMDB_API_BASE;
+    private urlID: string = StringList.OMDB_API_BASE;    
 
     constructor(private http: Http) {}  
        
