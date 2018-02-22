@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { FacebookModule } from 'ngx-facebook';
 
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
@@ -15,14 +15,17 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { HomeComponent } from './home/home.component';
 import { MovieReviewComponent } from './movie-review/movie-review.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'newreview', component: NewMovieReviewComponent},
-  { path: 'moviereview', component: MovieReviewComponent}
-
+  { path: 'moviereview', component: MovieReviewComponent},
+  { path: 'login', component: LoginComponent},
+  { path: 'register', component: RegisterComponent}
 ]
 
 @NgModule({
@@ -34,11 +37,14 @@ const routes: Routes = [
     MovieDetailsComponent,
     NewMovieReviewComponent,
     HomeComponent,
-    MovieReviewComponent
+    MovieReviewComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
+    FacebookModule.forRoot(),
     HttpModule
   ],
   providers: [

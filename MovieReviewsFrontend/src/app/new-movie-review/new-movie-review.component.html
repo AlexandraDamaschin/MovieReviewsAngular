@@ -11,6 +11,9 @@
 
 <br>
 
+<button (click)="customApiTest()">Test Custom API</button>
+<h1 *ngIf="filmReviewBool">[[[ {{filmReview.reviewComment}} ]]]</h1>
+
 <div *ngIf="searchBool && validMovie" class="movieOutput" (click)="movieSelected(filmTitle, filmID)">
   <div class="row">
     <div class="col-md-4"><img class="img-responsive" src="{{film.Poster}}"/></div>
@@ -19,7 +22,7 @@
       <h5 class="grayText">{{"Director: "+film.Director}}</h5>
       <h5 class="grayText">{{"Rated: "+film.Rated}}</h5>
       <hr/>
-      <p>{{film.Plot}}</p> 
+      <p>{{film.Plot}}</p>
       <br/>
       <br/>
       <h6 class="grayText actors">{{"Actors: "+film.Actors}}</h6>
@@ -27,6 +30,7 @@
     </div>
   </div>
 </div>
+
 
 <div id="darkBackground" *ngIf="popupShow" (click)="closePopup()"></div>
 <div id="popup" *ngIf="popupShow">
