@@ -13,8 +13,8 @@ export class CustomApiService {
 
     constructor(private http: Http) { }
 
-    getReviews(): Observable<MovieReview> {
-        return this.http.get(this.urlBase).map((response: Response) => {
+    getReviews(movId): Observable<MovieReview> {
+        return this.http.get(this.urlBase + movId).map((response: Response) => {
             return <MovieReview>response.json();
         }).catch(this.handleError);
     }

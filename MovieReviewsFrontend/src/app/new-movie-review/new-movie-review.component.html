@@ -11,7 +11,8 @@
 
 <br>
 
-<button (click)="callCustomAPI()">Custom API Call (Test)</button>
+<input #imdbTest type="text" placeholder="Test Imdb ID"/>
+<button (click)="callCustomAPI(imdbTest.innerHTML)">Custom API Call (Test)</button>
 <h1 *ngIf="filmReviewBool"> ==>
   <ul>
     <li *ngFor="let rev of filmReviews">{{rev.reviewComment}}</li>
@@ -20,7 +21,7 @@
   <==
 </h1>
 
-<div *ngIf="searchBool && validMovie" class="movieOutput" (click)="movieSelected(filmTitle, filmID)">
+<div *ngIf="searchBool && validMovie" class="movieOutput" (click)="movieSelected(filmTitle.innerHTML, filmID.innerHTML)">
   <div class="row">
     <div class="col-md-4"><img class="img-responsive" [src]=[film.Poster]/></div>
     <div class="col-md-8" style="padding-top: 20px;">

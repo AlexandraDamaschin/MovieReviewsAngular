@@ -35,22 +35,22 @@ export class NewMovieReviewComponent implements OnInit {
     private _customApiService: CustomApiService) { }
 
 
-  callCustomAPI() {
-    let self = this;
-    self._customApiService.getReviews()
+  callCustomAPI(movId) {
+    let self = this; // getReviews(movId) *****
+    self._customApiService.getReviews(movId)
       .subscribe(response => this.filmReviews = response, error => this.errorMessage = <any>error);
-    console.log("***** Method finished. *****");
+    console.log("***** Method finished. movId: " + movId);
     this.filmReviewBool = true;
-    console.log("*** Comment: " + this.filmReviews[0].reviewComment);
+    // console.log("*** Comment: " + this.filmReviews.reviewComment);
   }
 
-  movieSelected(smt, id) {
-    this.selMovieTitle = smt;
+  movieSelected(title, id) {
+    this.selMovieTitle = title;
     this.selMovieID = id;
     this.popupShow = true;
     console.log("Movie: " + this.selMovieTitle + " - imdbID: " + this.selMovieID);
 
-    this.callCustomAPI();
+    this.callCustomAPI(this.selMovieID);
   }
 
   closePopup() {
