@@ -12,7 +12,7 @@
 <br>
 
 <button (click)="customApiTest()">Test Custom API</button>
-<h1 *ngIf="filmReviewBool">[[[ {{filmReview.ReviewComment}} ]]]</h1>
+<h1 *ngIf="filmReviewBool">[[[ {{filmReview.reviewComment}} ]]]</h1>
 
 <div *ngIf="searchBool && validMovie" class="movieOutput" (click)="movieSelected(filmTitle, filmID)">
   <div class="row">
