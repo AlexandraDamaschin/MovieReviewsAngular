@@ -15,9 +15,10 @@ export class CustomApiService {
 
     getReviews(): Observable<MovieReview> {
         return this.http.get(this.urlBase).map((response: Response) => {
-            return <MovieReview>response.json()
+            return <MovieReview>response.json();
         }).catch(this.handleError);
     }
+
 
     // getReviewID(id): Observable<MovieReview> {
     //     return this.http

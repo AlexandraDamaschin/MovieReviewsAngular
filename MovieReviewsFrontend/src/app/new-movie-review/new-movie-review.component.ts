@@ -20,7 +20,7 @@ export class NewMovieReviewComponent implements OnInit {
   resultUser: boolean = false;
 
   film: Movie;
-  filmReview: MovieReview;
+  filmReviews: MovieReview;
   filmReviewBool: boolean = false;
 
   errorMessage: string;
@@ -34,13 +34,14 @@ export class NewMovieReviewComponent implements OnInit {
     private _movieService: MovieService, 
     private _customApiService: CustomApiService) { }
 
-  customApiTest() {
+
+  callCustomAPI() {
     let self = this;
     self._customApiService.getReviews()
-      .subscribe(response => this.filmReview = response, error => this.errorMessage = <any>error);
+      .subscribe(response => this.filmReviews = response, error => this.errorMessage = <any>error);
     console.log("***** Method finished. *****");
     this.filmReviewBool = true;
-    console.log("*** Comment: " + this.filmReview[0].reviewComment);
+    console.log("*** Comment: " + this.filmReviews[0].reviewComment);
   }
 
   movieSelected(smt, id) {
@@ -48,6 +49,8 @@ export class NewMovieReviewComponent implements OnInit {
     this.selMovieID = id;
     this.popupShow = true;
     console.log("Movie: " + this.selMovieTitle + " - imdbID: " + this.selMovieID);
+
+    this.callCustomAPI();
   }
 
   closePopup() {
