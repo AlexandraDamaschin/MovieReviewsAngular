@@ -1,24 +1,23 @@
 export class MovieReview {
-    reviewId: number;
-    userID: number;
-    imdbId: string;
-    reviewComment: string;
-    dateCreated: DateTimeFormat;
-    starRating: number;
+    ReviewId: number;
+    UserId: number;
+    ImdbId: string;
+    ReviewComment: string;
+    DateCreated: DateTimeFormat;
+    StarRating: number;
 
-    constructor(
-        reviewId: number,
-        userID: number,
-        imdbId: string,
-        reviewComment: string,
-        dateCreated: DateTimeFormat,
-        starRating: number) {
-
-        this.reviewId = reviewId;
-        this.userID = userID;
-        this.imdbId = imdbId;
-        this.reviewComment = reviewComment;
-        this.dateCreated = dateCreated;
-        this.starRating = starRating;
+    constructor(ReviewId: number, 
+                UserId: number, 
+                ImdbId: string, 
+                ReviewComment: string, 
+                DateCreated: DateTimeFormat, 
+                StarRating: number){
+        
+                    this.ReviewId = ReviewId;
+                    this.UserId = UserId;
+                    this.ImdbId = ImdbId;
+                    this.ReviewComment = ReviewComment;
+                    this.DateCreated = DateCreated;
+                    this.StarRating = StarRating;
     }
 }

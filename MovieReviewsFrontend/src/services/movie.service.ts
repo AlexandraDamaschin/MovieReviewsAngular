@@ -11,7 +11,7 @@ export class MovieService {
 
     constructor(private http: Http) {}  
        
-    getMovies(x): Observable < Movie > {  
+    getMovies(x): Observable < Movie > {
         return this.http.get(this.urlBase + x).map((response: Response) => {  
             return <Movie > response.json()  
         }).catch(this.handleError);  
