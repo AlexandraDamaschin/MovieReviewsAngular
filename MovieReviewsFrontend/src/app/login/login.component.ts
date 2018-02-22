@@ -11,8 +11,12 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
   }
+  formSubmit() {
+    console.log("formSubmit");
 
-  socialLogin(){
+  }
+
+  socialLogin() {
     console.log("socialLogin");
   }
 }
