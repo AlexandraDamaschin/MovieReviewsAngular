@@ -8,8 +8,9 @@ import { MovieReview } from '../models/movie-review';
 @Injectable()
 
 export class CustomApiService {
-    private urlBase: string = "http://localhost:56580/api/review";
-    private urlID: string = "http://localhost:56580/api/review";
+    // http://localhost:57581/api/Reviews
+    private urlBase: string = "http://localhost:57581";
+    private urlID: string = "http://localhost:57581";
 
     constructor(
         private http: Http
