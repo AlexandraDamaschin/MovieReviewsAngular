@@ -7,16 +7,43 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
+  loginShow: boolean = true;
+
   constructor() { }
 
-  ngOnInit() {
-  }
   formSubmit() {
-    console.log("formSubmit");
+    console.log("Form Submit");
+  }
+
+  forgotPassword() {
+    console.log("Forgot Password");
+  }
+
+  register() {
+    console.log("Register");
+    this.loginShow = false;
+  }
+
+  backToLogin() {
+    this.loginShow = true;
+  }
+
+  socialLogin(x) {
+    if(x == "google") {
+      console.log("Google Login");
+    } 
+    else if (x == "fb") {
+      console.log("Facebook Login");
+    } 
+    else if (x == "github") {
+      console.log("Github Login");
+    } 
+    else if (x == "twitter") {
+      console.log("Twitter Login");
+    }
 
   }
 
-  socialLogin() {
-    console.log("socialLogin");
-  }
+  
+  ngOnInit() { }
 }

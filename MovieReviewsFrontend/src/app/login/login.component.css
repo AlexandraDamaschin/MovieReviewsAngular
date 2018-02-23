@@ -1,0 +1,50 @@
+.btn {
+    cursor: pointer;
+    margin: 2px;
+    transition: .1s;
+    border-radius: 1px;
+}
+
+.btn:hover {
+    transform: scale(1.05,1.05);
+}
+
+.btn:active {
+    transform: scale(0.98,0.98);
+}
+
+#wrap {
+    max-width: 400px;
+    box-shadow: 0px 1px 2px gray;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: white;
+}
+
+.form-control {
+    border-radius: 1px;
+}
+
+.socialDiv {
+    max-width: 250px;
+    margin: 0 auto;
+}
+
+.btnSocial {
+    display: inherit !important;
+    transition: .1s;
+    cursor: pointer;
+    text-align: center;
+}
+
+.btnSocial:hover {
+    transform: scale(1.5,1.5);
+}
+
+.btnSocial:active {
+    transform: scale(1.2,1.2);
+}
+
+.fa {
+    font-size: 25px;
+}

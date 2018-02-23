@@ -1,51 +1,55 @@
-<div class="row">
-  <div class="col-xs-12">
-    <div class="login-container">
-      <form ng-submit="formSubmit()" class="form">
-        <div class="col-xs-12">
-          <div class="form-group">
-            <input type="text" class="form-control" ng-model="email" placeholder="email" required="" />
-          </div>
-          <div class="form-group">
-            <input type="password" class="form-control" ng-model="password" placeholder="password" required="" />
-          </div>
-          <div class="form-group">
-            <button type="submit" class="btn btn-success">Login</button>
-          </div>
+<div id="wrap">
+    <form ng-submit="formSubmit()" class="form">
+      <div class="form-group" *ngIf="!loginShow">
+          <input type="text" class="form-control" ng-model="username" placeholder="Username" required="" />
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" ng-model="email" placeholder="E-mail" required="" />
+      </div>
+      <div class="form-group">
+        <input type="password" class="form-control" ng-model="password" placeholder="Password" required="" />
+      </div>
+      <div class="form-group" *ngIf="!loginShow">
+          <input type="text" class="form-control" ng-model="password2" placeholder="Confirm Password" required="" />
+      </div>
+      <div class="form-group" *ngIf="loginShow">
+        <button type="submit" class="btn btn-success btn-block">Login</button>
+      </div>
+    </form>
+
+    <div class="row socialDiv" *ngIf="loginShow">
+      <div class="col-sm-3">
+        <div class="btnSocial" (click)="socialLogin('google')">
+          <i class="fa fa-google"></i>
         </div>
-      </form>
-    </div>
-    <div class="row">
-      <div class="col-xs-3">
-        <button (click)="socialLogin()">
-          <i class="fa fa-google">
-          </i>
-        </button>
       </div>
-      <div class="col-xs-3">
-        <button (click)="socialLogin()">
-          <i class="fa fa-facebook-square">
-          </i>
-        </button>
+      <div class="col-sm-3">
+        <div class="btnSocial" (click)="socialLogin('fb')">
+          <i class="fa fa-facebook-square"></i>
+        </div>
       </div>
-      <div class="col-xs-3 social-login">
-        <button (click)="socialLogin()">
+      <div class="col-sm-3">
+        <div class="btnSocial" (click)="socialLogin('github')">
           <i class="fa fa-github"></i>
-        </button>
+        </div>
       </div>
-      <div class="col-xs-3 social-login">
-        <button (click)="socialLogin()">
+      <div class="col-sm-3">
+        <div class="btnSocial" (click)="socialLogin('twitter')">
           <i class="fa fa-twitter"></i>
-        </button>
+        </div>
       </div>
     </div>
+
     <br>
+
     <div class="row">
-      <button (click)="forgotPassword()">Forgot Password?</button>
+        <button class="btn btn-block btn-{{loginShow ? 'default' : 'success'}}" (click)="register()">Register</button>
+      </div>
+      <div class="row" *ngIf="!loginShow">
+          <button class="btn btn-block btn-link" (click)="backToLogin()">Back to Login</button>
+        </div>
+    <div class="row" *ngIf="loginShow">
+      <button class="btn btn-block btn-link" (click)="forgotPassword()">Forgot Password?</button>
     </div>
-    <br>
-    <div class="row">
-      <button (click)="register()">Register</button>
-    </div>
-  </div>
+
 </div>
