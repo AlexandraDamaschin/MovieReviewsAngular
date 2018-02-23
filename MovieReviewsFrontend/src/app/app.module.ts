@@ -18,6 +18,7 @@ import { MovieReviewComponent } from './movie-review/movie-review.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ChatComponent } from './chat/chat.component';
+//import { signalr } from '../node_modules/angular-signalr-hub/signalr-hub.js';
 
 
 
