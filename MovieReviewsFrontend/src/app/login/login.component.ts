@@ -20,7 +20,10 @@ export class LoginComponent implements OnInit {
   }
 
   register() {
-    console.log("Register");
+    if(!this.loginShow) {
+      // Register code goes inside this IF
+      console.log("Register");
+    }
     this.loginShow = false;
   }
 
