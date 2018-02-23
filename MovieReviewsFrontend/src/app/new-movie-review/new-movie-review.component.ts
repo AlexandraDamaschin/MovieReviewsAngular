@@ -25,7 +25,7 @@ export class NewMovieReviewComponent implements OnInit {
   filmReviewBool: boolean = false;
 
   reviewedMovies: MovieReview;
-  reviewedMoviesDistinct: MovieReview;
+  // reviewedMoviesDistinct: MovieReview;
 
   errorMessage: string;
   movieName: string;

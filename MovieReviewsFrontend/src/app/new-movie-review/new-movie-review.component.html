@@ -11,21 +11,24 @@
 
 <br>
 
-<input #imdbTest type="text" placeholder="Test Imdb ID"/>
+<!-- <input #imdbTest type="text" placeholder="Test Imdb ID"/>
 <button (click)="callCustomAPI(imdbTest.innerHTML)">Custom API Call (Test)</button>
 <h1 *ngIf="filmReviewBool"> ==>
   <ul>
     <li *ngFor="let rev of filmReviews">{{rev.reviewComment}}</li>
   </ul>
   <==
-</h1>
+</h1> -->
 
-
+<!-- Reviewed Movies -->
 <hr>
-<button (click)="callCustomAPI_List()">Test List</button>
-<h4>Reviewed Movies</h4>
+<button (click)="callCustomAPI_List()">Show Reviewed Movies (BUGGY)</button>
+<h4>Reviewed Movies ()</h4>
+<!-- <ul>
+  <p><span *ngFor="let movRev of reviewedMovies">{{movRev.imdbId}} </span></p>
+</ul> -->
 
-<app-movie-icon *ngFor="let movRev of reviewedMovies" [Imdb]="movRev">{{ movRev.imdbId }}</app-movie-icon>
+<app-movie-icon (click)="movieSelected(filmTitle.innerHTML, filmID.innerHTML)" *ngFor="let movRev of reviewedMovies" [Imdb]="movRev"></app-movie-icon>
 
 <hr>
 

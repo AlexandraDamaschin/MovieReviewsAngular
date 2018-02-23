@@ -9,7 +9,7 @@ import { StringList } from './strings';
 export class MovieService {
 
     private urlBase: string = StringList.OMDB_API_BASE;
-    private urlID: string = StringList.OMDB_API_BASE;    
+    private urlID: string = StringList.OMDB_API_BASE_ID;    
 
     constructor(private http: Http) {}  
        
