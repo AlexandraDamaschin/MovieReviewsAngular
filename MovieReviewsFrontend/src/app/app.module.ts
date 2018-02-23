@@ -17,6 +17,7 @@ import { HomeComponent } from './home/home.component';
 import { MovieReviewComponent } from './movie-review/movie-review.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { ChatComponent } from './chat/chat.component';
 
 
 const routes: Routes = [
@@ -39,7 +40,8 @@ const routes: Routes = [
     HomeComponent,
     MovieReviewComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,
