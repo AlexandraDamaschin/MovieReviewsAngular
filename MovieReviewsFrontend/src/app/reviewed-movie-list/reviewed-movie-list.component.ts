@@ -16,16 +16,8 @@ export class ReviewedMovieListComponent implements OnInit {
   errorMessage: string;
   movieID: string;
 
-  constructor() { 
+  constructor() { }
 
-    this.ReviewedMovies = [
-      new MovieDetails('tt1856101','$39'),
-      new MovieDetails('tt0083658','$45')
-    ];
-
-  }
-
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
 }

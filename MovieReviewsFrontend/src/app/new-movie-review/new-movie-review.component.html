@@ -17,9 +17,18 @@
   <ul>
     <li *ngFor="let rev of filmReviews">{{rev.reviewComment}}</li>
   </ul>
-
   <==
 </h1>
+
+
+<hr>
+<button (click)="callCustomAPI_List()">Test List</button>
+<h4>Reviewed Movies</h4>
+
+<app-movie-icon *ngFor="let movRev of reviewedMovies" [Imdb]="movRev">{{ movRev.imdbId }}</app-movie-icon>
+
+<hr>
+
 
 <div *ngIf="searchBool && validMovie" class="movieOutput" (click)="movieSelected(filmTitle.innerHTML, filmID.innerHTML)">
   <div class="row">
@@ -44,12 +53,6 @@
   <h1 id="closePopupX" (click)="closePopup()">X</h1>
   <div id="prevComments">
     <h3>What others are saying about {{film.Title}}</h3>
-    <!-- <ul>
-      <li>"Great movie!"</li>
-      <li>"Best movie I've ever seen!"</li>
-      <li>"Boring, would not recommend.."</li>
-      <li>"It's okay-ish I guess :/"</li>
-    </ul> -->
     <ul>
       <li style="color: white;" *ngFor="let rev of filmReviews">{{rev.reviewComment}}</li>
     </ul>

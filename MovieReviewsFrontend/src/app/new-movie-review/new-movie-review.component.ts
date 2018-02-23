@@ -4,6 +4,7 @@ import { CustomApiService } from '../../services/custom-api.service';
 import { Movie } from '../../models/movie';
 import { MovieReview } from '../../models/movie-review';
 import { HttpModule } from '@angular/http';
+import { MovieIconComponent } from '../movie-icon/movie-icon.component';
 
 @Component({
   selector: 'app-new-movie-review',
@@ -23,6 +24,9 @@ export class NewMovieReviewComponent implements OnInit {
   filmReviews: MovieReview;
   filmReviewBool: boolean = false;
 
+  reviewedMovies: MovieReview;
+  reviewedMoviesDistinct: MovieReview;
+
   errorMessage: string;
   movieName: string;
 
@@ -36,13 +40,21 @@ export class NewMovieReviewComponent implements OnInit {
 
 
   callCustomAPI(movId) {
-    let self = this; // getReviews(movId) *****
-    self._customApiService.getReviews(movId)
+    let self = this;
+    self._customApiService.getReviewsByID(movId)
       .subscribe(response => this.filmReviews = response, error => this.errorMessage = <any>error);
     console.log("***** Method finished. movId: " + movId);
     this.filmReviewBool = true;
-    // console.log("*** Comment: " + this.filmReviews.reviewComment);
   }
+
+  callCustomAPI_List() {
+    let self = this;
+    self._customApiService.getReviews()
+      .subscribe(response => this.reviewedMovies = response, error => this.errorMessage = <any>error);
+    console.log("***** Method finished. *****");
+    this.filmReviewBool = true;
+  }
+
 
   movieSelected(title, id) {
     this.selMovieTitle = title;
