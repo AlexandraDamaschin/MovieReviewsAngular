@@ -5,6 +5,7 @@ import { Movie } from '../../models/movie';
 import { MovieReview } from '../../models/movie-review';
 import { HttpModule } from '@angular/http';
 import { MovieIconComponent } from '../movie-icon/movie-icon.component';
+import {} from '../../services/push-revire-to-db'
 
 @Component({
   selector: 'app-new-movie-review',
@@ -82,6 +83,10 @@ export class NewMovieReviewComponent implements OnInit {
     } 
     else
       console.log("No movie!");
+  }
+
+  submitReview(){
+    makeConnection()
   }
 
   ngOnInit(): void { }
