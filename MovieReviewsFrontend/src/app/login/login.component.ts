@@ -8,16 +8,18 @@ import { Component, OnInit } from '@angular/core';
 export class LoginComponent implements OnInit {
 
   loginShow: boolean = true;
-
+  
   constructor() { }
 
-  formSubmit() {
-    console.log("Form Submit");
+  login(username, password){
+    console.log("username --> " + username + " . password --> " + password);
+    return false; // Remove this for successful submit, this is here for dev only.
   }
 
   forgotPassword() {
     console.log("Forgot Password");
   }
+
 
   register() {
     if(!this.loginShow) {
@@ -27,9 +29,15 @@ export class LoginComponent implements OnInit {
     this.loginShow = false;
   }
 
+  formSubmit() {
+    console.log("formSubmit");
+  }
+
+
   backToLogin() {
     this.loginShow = true;
   }
+
 
   socialLogin(x) {
     if(x == "google") {
@@ -44,9 +52,7 @@ export class LoginComponent implements OnInit {
     else if (x == "twitter") {
       console.log("Twitter Login");
     }
-
   }
 
-  
-  ngOnInit() { }
+  ngOnInit(){ }
 }
