@@ -22,16 +22,19 @@
 
 <!-- Reviewed Movies -->
 <hr>
-<button (click)="callCustomAPI_List()">Show Reviewed Movies (BUGGY) (SHIFT + ESC)</button>
+<button (click)="callCustomAPI_List()">Show Reviewed Movies</button>
 <h4>Reviewed Movies ()</h4>
+<ul>
+  <div #sampleID style="box-shadow: 0px 1px 1px gray; padding: 10px; margin-bottom: 5px; cursor: pointer;" *ngFor="let movRev of reviewedMovies" (click)="movieSelected('test', sampleID.innerHTML)">{{movRev.imdbId}}</div>
+</ul>
+
 <!-- <ul>
-  <p><span *ngFor="let movRev of reviewedMovies">{{movRev.imdbId}} </span></p>
+  <li *ngFor="let x of movieReviews"></li>
 </ul> -->
 
-<app-movie-icon (click)="movieSelected(filmTitle.innerHTML, filmID.innerHTML)" *ngFor="let movRev of reviewedMovies" [Imdb]="movRev"></app-movie-icon>
+<!-- <app-movie-icon (click)="movieSelected(filmTitle.innerHTML, filmID.innerHTML)" *ngFor="let movRev of reviewedMovies" [Imdb]="movRev"></app-movie-icon> -->
 
 <hr>
-
 
 <div *ngIf="searchBool && validMovie" class="movieOutput" (click)="movieSelected(filmTitle.innerHTML, filmID.innerHTML)">
   <div class="row">
@@ -53,13 +56,16 @@
 
 <div id="darkBackground" *ngIf="popupShow" (click)="closePopup()"></div>
 <div id="popup" *ngIf="popupShow">
-  <h1 id="closePopupX" (click)="closePopup()">X</h1>
-  <div id="prevComments">
-    <h3>What others are saying about {{film.Title}}</h3>
-    <ul>
-      <li style="color: white;" *ngFor="let rev of filmReviews">{{rev.reviewComment}}</li>
-    </ul>
-  </div>
-  <input type="text" class="form-control" placeholder="Write Review.." *ngIf="popupShow"/>
-  <button (click)="submitReview()">Submit</button>        
+  <form ng-submit="doPUT()">
+      <h1 id="closePopupX" (click)="closePopup()">X</h1>
+      <div id="prevComments">
+        <h3>What others are saying about {{film.Title}}</h3>
+        <ul>
+          <li style="color: white;" *ngFor="let rev of filmReviews">{{rev.reviewComment}}</li>
+        </ul>
+      </div>
+      <input type="text" class="form-control" placeholder="Write Review.." *ngIf="popupShow"/>
+      <!-- <button (click)="submitReview()">Submit</button>   -->
+      <input type="submit" value="Submit Review" class="btn"/>
+  </form> 
 </div>

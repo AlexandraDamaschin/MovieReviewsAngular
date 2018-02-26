@@ -36,12 +36,14 @@ export class MovieIconComponent implements OnInit {
       console.log("No movie!");
   }
 
+  
+
   getImageURL(x):string {
     let self = this;
     if (this.Imdb.imdbId != ""){
       self._movieService.getMovieID(this.Imdb.imdbId).subscribe(response => this.temp = response, error => this.errorMessage = <any>error);
     }
-    return this.temp.Poster;
+    return this.temp.Title;
   }
 
   ngOnInit() {

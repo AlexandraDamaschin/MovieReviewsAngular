@@ -3,8 +3,9 @@ import { MovieService } from '../../services/movie.service';
 import { CustomApiService } from '../../services/custom-api.service';
 import { Movie } from '../../models/movie';
 import { MovieReview } from '../../models/movie-review';
-import { HttpModule } from '@angular/http';
+import { HttpModule, Http } from '@angular/http';
 import { MovieIconComponent } from '../movie-icon/movie-icon.component';
+import { StringList } from '../../services/strings';
 
 @Component({
   selector: 'app-new-movie-review',
@@ -27,6 +28,8 @@ export class NewMovieReviewComponent implements OnInit {
   reviewedMovies: MovieReview;
   // reviewedMoviesDistinct: MovieReview;
 
+  movieReviews: string[];
+
   errorMessage: string;
   movieName: string;
 
@@ -36,8 +39,21 @@ export class NewMovieReviewComponent implements OnInit {
 
   constructor(
     private _movieService: MovieService, 
-    private _customApiService: CustomApiService) { }
+    private _customApiService: CustomApiService,
+  private http: Http) { }
 
+
+  // reviewSubmit(review: MovieReview) {
+  //   let headers = new Headers();
+  //   headers.append('Content-Type', 'application/json');
+
+  //   let url = `${StringList.CUSTOM_API_BASE}/${review.imdbId}`;
+
+  //   return this.http
+  //             .put(url, JSON.stringify(review), {headers: headers}) //???
+  //             .map(res => res.json());
+
+  // }
 
   callCustomAPI(movId) {
     let self = this;
@@ -63,6 +79,10 @@ export class NewMovieReviewComponent implements OnInit {
     console.log("Movie: " + this.selMovieTitle + " - imdbID: " + this.selMovieID);
 
     this.callCustomAPI(this.selMovieID);
+  }
+
+  testClick1(x){
+    console.log(x);
   }
 
   closePopup() {
