@@ -86,7 +86,7 @@ export class NewMovieReviewComponent implements OnInit {
   }
 
   submitReview(){
-    makeConnection()
+    //makeConnection()
   }
 
   ngOnInit(): void { }

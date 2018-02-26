@@ -1,4 +1,4 @@
-function makeConnection()
+/*function makeConnection()
 {
 //Having serious issues with "require" running on the client side...
 var Connection = require('tedious').Connection;
@@ -55,4 +55,4 @@ function queryDatabase()
     //Execute the SQL proc
      connection.execSql(thisRequest);
    }
-}
+}*/
