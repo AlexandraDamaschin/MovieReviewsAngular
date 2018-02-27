@@ -66,6 +66,10 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Credentials } from '../../models/credentials';
 import { UserServiceService } from '../../services/user-service.service';
 
+
+import { tokenNotExpired } from 'angular2-jwt';
+
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -80,6 +84,11 @@ export class LoginComponent implements OnInit, OnDestroy {
   isRequesting: boolean;
   submitted: boolean = false;
   credentials: Credentials = { email: '', password: '' };
+  email: string;
+  password: string;
+
+  authToken: any;
+  user: any;
 
   constructor(private userService: UserServiceService, private router: Router,private activatedRoute: ActivatedRoute) { }
 
@@ -114,4 +123,33 @@ export class LoginComponent implements OnInit, OnDestroy {
         error => this.errors = error);
     }
   }
+
+    //store data of users as JSON
+    storeUserData(token, email, password) {
+      localStorage.setItem('auth_token', token);
+      localStorage.setItem('email', JSON.stringify(this.credentials.email));
+      localStorage.setItem('password', JSON.stringify(this.credentials.password));
+      this.authToken = token;
+      this.email = email;
+      this.password = password;
+    }
+  
+    //store token
+    loadToken() {
+      const token = localStorage.getItem('auth_token');
+      this.authToken = token;
+    }
+  
+    //store token for keep user loggin for certain amount of time
+    loggedIn() {
+      return tokenNotExpired('auth_token');
+    }
+  
+    //clear local storage -> logout
+    logout() {
+      this.authToken = null;
+      this.user = null;
+      localStorage.clear();
+    }
+  
 }
