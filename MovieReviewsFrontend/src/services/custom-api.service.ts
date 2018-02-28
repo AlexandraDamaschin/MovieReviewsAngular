@@ -25,6 +25,12 @@ export class CustomApiService {
         }).catch(this.handleError);
     }
 
+    addReviewByID(movId, review): Observable<MovieReview> {
+        return this.http.post(this.urlBase + movId, review).map((response: Response) => {
+            return <MovieReview>response.json();
+        }).catch(this.handleError);
+    }
+
     // getReviewID(id): Observable<MovieReview> {
     //     return this.http
     //         .get(this.urlID + id)

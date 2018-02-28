@@ -85,8 +85,12 @@ export class NewMovieReviewComponent implements OnInit {
       console.log("No movie!");
   }
 
-  submitReview(){
-    //makeConnection()
+  addReview(review){
+    let self = this;
+
+    if (this.movieName != "") {
+      self._customApiService.addReviewByID(this.film.imdbID, review);
+    }
   }
 
   ngOnInit(): void { }
