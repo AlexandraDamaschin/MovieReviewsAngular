@@ -18,6 +18,9 @@ import { MovieReviewComponent } from './movie-review/movie-review.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 
+//social login
+import { SocialLoginModule, AuthServiceConfig } from "angular4-social-login";
+import { GoogleLoginProvider, FacebookLoginProvider } from "angular4-social-login";
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -27,6 +30,18 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent}
 ]
+
+//config services
+let config = new AuthServiceConfig([
+  {
+    id: GoogleLoginProvider.PROVIDER_ID,
+    provider: new GoogleLoginProvider("264892006191-masj6pnimfpcu6bm4a8akhe1ndp6ijn2.apps.googleusercontent.com")
+  },
+  {
+    id: FacebookLoginProvider.PROVIDER_ID,
+    provider: new FacebookLoginProvider("2125829164311732")
+  }
+]);
 
 @NgModule({
   declarations: [
@@ -44,7 +59,7 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
-    FacebookModule.forRoot(),
+    SocialLoginModule.initialize(config),
     HttpModule
   ],
   providers: [
