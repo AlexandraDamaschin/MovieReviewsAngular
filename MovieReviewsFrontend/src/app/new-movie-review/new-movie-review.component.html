@@ -43,6 +43,19 @@
 <!-- End Reviewed Movies -->
 
 
+
+<!-- Sample Comment Display -->
+
+<!-- <button (click)="callCustomAPI('')">Show Comments</button>
+<h3 *ngIf="filmReviewBool">
+  <ul>
+    <li style="cursor: pointer;" #testVal (click)="movieSelected('TEST', testVal.innerHTML)" *ngFor="let rev of filmReviews">{{rev.reviewComment}}</li>
+  </ul>
+</h3> -->
+
+<!-- End Sample Comment Display -->
+
+
 <div id="darkBackground" *ngIf="popupShow" (click)="closePopup()"></div>
 <div id="popup" *ngIf="popupShow">
   <h1 id="closePopupX" (click)="closePopup()">X</h1>
