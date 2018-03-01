@@ -54,6 +54,6 @@
       <li style="color: white;" *ngFor="let rev of filmReviews">{{rev.reviewComment}}</li>
     </ul>
   </div>
-  <input type="text" class="form-control" placeholder="Write Review.." *ngIf="popupShow"/>
-  <button (click)="submitReview()">Submit</button>        
+  <input #newReviewText type="text" class="form-control" placeholder="Write Review.."/>
+  <button (click)="submitReview(newReviewText.value)">Submit</button>        
 </div>

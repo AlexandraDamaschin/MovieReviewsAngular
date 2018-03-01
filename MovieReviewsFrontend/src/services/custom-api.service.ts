@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Movie } from '../models/movie';
 import 'rxjs/Rx';
 import { Observable } from 'rxjs/Observable';
-import { Http, Response } from '@angular/http';
+import { Headers, Http, Response } from '@angular/http';
 import { MovieReview } from '../models/movie-review';
 import { StringList } from './strings';
 
@@ -10,8 +10,17 @@ import { StringList } from './strings';
 export class CustomApiService {  
 
     private urlBase: string = StringList.CUSTOM_API_BASE;
+    private putUrl: string = 'http://localhost:63548/api/reviews/';
+
+    private headers = new Headers({ 'Content-Type': 'application/json' });
 
     constructor(private http: Http) { }
+
+    createReview(review: MovieReview) {
+        // return this.http.post(this.putUrl, JSON.stringify(review), { headers: this.headers })
+        // .catch(this.handleError);
+        return this.http.post(this.putUrl, review);
+      }
 
     getReviews(movId): Observable<MovieReview> {
         return this.http.get(this.urlBase + movId).map((response: Response) => {
