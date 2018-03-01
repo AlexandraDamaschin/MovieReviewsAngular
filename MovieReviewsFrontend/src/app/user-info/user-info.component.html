@@ -1,4 +1,4 @@
-<div id="wrap" class="container" *ngIf="loginShow && loggedIn">
+<div id="wrap" class="container" *ngIf="loggedIn">
 
   <img src="{{ user.photoUrl }}" alt="Profile Picture"/>
 
@@ -12,6 +12,6 @@
 
   <br>
 
-  <input type="button" value="Logout" class="btn btn-block"/>
+  <input type="button" (click)="logout()" value="Logout" class="btn btn-block"/>
 
 </div>

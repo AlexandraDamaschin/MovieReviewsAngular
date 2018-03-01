@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from "angular4-social-login";
 import { SocialUser } from "angular4-social-login";
+import { StringList } from '../../services/strings';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-info',
@@ -9,13 +11,18 @@ import { SocialUser } from "angular4-social-login";
 })
 export class UserInfoComponent implements OnInit {
 
-  loginShow: boolean = true;
-  private user: SocialUser;
-  private loggedIn: boolean;
+  public user: SocialUser;
+  public loggedIn: boolean;
 
-  constructor(
-    private authService: AuthService
-  ) { }
+
+  constructor(private authService: AuthService, private router: Router) {
+    // this.loggedIn = StringList.LOGGED_IN;
+   }
+
+   logout(){
+    this.authService.signOut();
+    this.router.navigate(['login']);
+   }
 
   ngOnInit() {
     this.authService.authState.subscribe((user) => {
