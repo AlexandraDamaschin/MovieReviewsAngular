@@ -10,12 +10,14 @@ import { FacebookLoginProvider, GoogleLoginProvider } from "angular4-social-logi
 export class LoginComponent implements OnInit {
 
   loginShow: boolean = true;
-  
+
   constructor(
     private authService: AuthService
   ) { }
 
-  login(username, password){
+  ngOnInit() { }
+
+  login(username, password) {
     console.log("username --> " + username + " . password --> " + password);
     return false; // Remove this for successful submit, this is here for dev only.
   }
@@ -23,6 +25,7 @@ export class LoginComponent implements OnInit {
   //google login
   signInWithGoogle(): void {
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
+    console.log("signInWithGoogle");
   }
 
   //fb login
@@ -30,7 +33,7 @@ export class LoginComponent implements OnInit {
     this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
     console.log("signInWithFB");
   }
- 
+
   //sign out
   signOut(): void {
     this.authService.signOut();
@@ -42,7 +45,7 @@ export class LoginComponent implements OnInit {
 
 
   register() {
-    if(!this.loginShow) {
+    if (!this.loginShow) {
       // Register code goes inside this IF
       console.log("Register");
     }
@@ -58,5 +61,5 @@ export class LoginComponent implements OnInit {
     this.loginShow = true;
   }
 
-  ngOnInit(){ }
+
 }

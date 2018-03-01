@@ -17,10 +17,12 @@ import { HomeComponent } from './home/home.component';
 import { MovieReviewComponent } from './movie-review/movie-review.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { UserInfoComponent } from './user-info/user-info.component';
 
 //social login
 import { SocialLoginModule, AuthServiceConfig } from "angular4-social-login";
 import { GoogleLoginProvider, FacebookLoginProvider } from "angular4-social-login";
+
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -28,10 +30,11 @@ const routes: Routes = [
   { path: 'newreview', component: NewMovieReviewComponent},
   { path: 'moviereview', component: MovieReviewComponent},
   { path: 'login', component: LoginComponent},
-  { path: 'register', component: RegisterComponent}
+  { path: 'register', component: RegisterComponent},
+  { path: 'userinfo', component: UserInfoComponent}
 ]
 
-//config services
+//config services for social login
 let config = new AuthServiceConfig([
   {
     id: GoogleLoginProvider.PROVIDER_ID,
@@ -54,7 +57,8 @@ let config = new AuthServiceConfig([
     HomeComponent,
     MovieReviewComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    UserInfoComponent
   ],
   imports: [
     BrowserModule,
