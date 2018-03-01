@@ -12,17 +12,22 @@
     <div class="collapse navbar-collapse" id="navbarsExample09">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" [routerLink]="['home']">Home</a>
+          <a class="nav-link" [routerLink]="['home']">
+            <i class="fa fa-home fa-2x"></i>
+            Home</a>
         </li>
         <li class="nav-item active" *ngIf="loggedIn">
-          <a class="nav-link" [routerLink]="['profile']">My Profile</a>
+          <a class="nav-link" [routerLink]="['profile']">
+            <i class="fa fa-user fa-2x"></i>
+            My Profile</a>
         </li>
-        <li class="nav-item active">
-          <a style="cursor: pointer;" class="nav-link" (click)="loginLogout()">{{loggedIn ? 'Logout' : 'Login' }}</a>
-        </li>
+
         <!-- <li class="nav-item">
           <a class="nav-link" [routerLink]="['newreview']">Review new movie</a>
         </li> -->
+        <li class="nav-item active">
+            <a style="cursor: pointer;" class="nav-link" (click)="loginLogout()">{{loggedIn ? 'Logout' : 'Login' }}</a>
+          </li>
       </ul>
     </div>
 
