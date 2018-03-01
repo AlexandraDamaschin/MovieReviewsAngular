@@ -4,6 +4,7 @@ import { SocialUser } from "angular4-social-login";
 import { StringList } from '../../services/strings';
 import { Router } from '@angular/router';
 import { ToastsManager } from 'ng2-toastr';
+import { LoginComponent } from '../login/login.component';
 
 @Component({
   selector: 'app-user-info',
@@ -24,14 +25,16 @@ export class UserInfoComponent implements OnInit {
     this.authService.signOut();
     this.router.navigate(['login']);
     // Doest get displayed
-    this.toastr.info('You have logged out', null, {toastLife: 2000});
+    // this.toastr.success('Logged out', null, {toastLife: 2000});
    }
 
   ngOnInit() {
     this.authService.authState.subscribe((user) => {
       this.user = user;
       this.loggedIn = (user != null);
+
+      if(!this.loggedIn)
+        this.router.navigate(['login']);
     });
   }
-
 }

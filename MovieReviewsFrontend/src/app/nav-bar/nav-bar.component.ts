@@ -25,12 +25,12 @@ export class NavBarComponent implements OnInit {
   loginLogout(){
     if(this.loggedIn) { // If logged in, signOut and go home
       this.authService.signOut();
-      this.router.navigate(['']);
       this.toastr.info('You have logged out', null, {toastLife: 2000});
+      this.router.navigate(['']);
     } 
     else { // If not logged in, go to login page
-      this.router.navigate(['login']);
       this.toastr.info('You are logged out', null, {toastLife: 2000});
+      this.router.navigate(['login']);
     }
   }
 
@@ -40,10 +40,8 @@ export class NavBarComponent implements OnInit {
       this.loggedIn = (user != null); // Checks if logged in
 
       if(this.loggedIn)
-      {
         this.router.navigate(['']);
-        this.toastr.success('Hello ' + user.firstName + '!', null, {toastLife: 2000});
-      }
+
     });
   }
 

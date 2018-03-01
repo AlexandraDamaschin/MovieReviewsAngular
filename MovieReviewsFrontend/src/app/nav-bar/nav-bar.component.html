@@ -9,7 +9,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarsExample09">
+    <div class="collapse navbar-collapse">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
           <a class="nav-link" [routerLink]="['home']">
@@ -21,12 +21,11 @@
             <i class="fa fa-user fa-2x"></i>
             My Profile</a>
         </li>
-        <!-- <li class="nav-item">
-          <a class="nav-link" [routerLink]="['newreview']">Review new movie</a>
-        </li> -->
         <li class="nav-item active">
-            <a style="cursor: pointer;" class="nav-link" (click)="loginLogout()">{{loggedIn ? 'Logout' : 'Login' }}</a>
-          </li>
+          <a style="cursor: pointer;" class="nav-link" (click)="loginLogout()">
+            <i class="fa fa-sign-{{loggedIn ? 'out' : 'in'}}"></i>
+            {{loggedIn ? 'Logout' : 'Login' }}</a>
+        </li>
       </ul>
     </div>
 

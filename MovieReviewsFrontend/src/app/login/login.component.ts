@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() { 
-    // this.toastr.info('You are logged out', null, {toastLife: 2000});
+      
   }
 
   login(username, password) {
