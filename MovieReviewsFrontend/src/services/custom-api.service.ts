@@ -17,8 +17,6 @@ export class CustomApiService {
     constructor(private http: Http) { }
 
     createReview(review: MovieReview) {
-        // return this.http.post(this.putUrl, JSON.stringify(review), { headers: this.headers })
-        // .catch(this.handleError);
         return this.http.post(this.putUrl, review);
       }
 

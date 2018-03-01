@@ -11,15 +11,6 @@
 
 <br>
 
-<input #imdbTest type="text" placeholder="Test Imdb ID"/>
-<button (click)="callCustomAPI(imdbTest.innerHTML)">Custom API Call (Test)</button>
-<h1 *ngIf="filmReviewBool"> ==>
-  <ul>
-    <li *ngFor="let rev of filmReviews">{{rev.reviewComment}}</li>
-  </ul>
-
-  <==
-</h1>
 
 <div *ngIf="searchBool && validMovie" class="movieOutput" (click)="movieSelected(filmTitle.innerHTML, filmID.innerHTML)">
   <div class="row">
@@ -38,18 +29,25 @@
   </div>
 </div>
 
+<hr>
+
+<!-- Reviewed Movies -->
+<button (click)="callCustomAPI('')">Show Movies With Reviews</button>
+<h3 *ngIf="filmReviewBool"> ==>
+  <ul>
+    <li style="cursor: pointer;" #testVal (click)="movieSelected('TEST', testVal.innerHTML)" *ngFor="let rev of filmReviews">{{rev.imdbId}}</li>
+  </ul>
+
+  <==
+</h3>
+<!-- End Reviewed Movies -->
+
 
 <div id="darkBackground" *ngIf="popupShow" (click)="closePopup()"></div>
 <div id="popup" *ngIf="popupShow">
   <h1 id="closePopupX" (click)="closePopup()">X</h1>
   <div id="prevComments">
     <h3>What others are saying about {{film.Title}}</h3>
-    <!-- <ul>
-      <li>"Great movie!"</li>
-      <li>"Best movie I've ever seen!"</li>
-      <li>"Boring, would not recommend.."</li>
-      <li>"It's okay-ish I guess :/"</li>
-    </ul> -->
     <ul>
       <li style="color: white;" *ngFor="let rev of filmReviews">{{rev.reviewComment}}</li>
     </ul>

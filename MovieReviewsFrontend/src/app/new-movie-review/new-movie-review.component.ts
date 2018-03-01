@@ -32,7 +32,9 @@ export class NewMovieReviewComponent implements OnInit {
 
   constructor(
     private _movieService: MovieService, 
-    private _customApiService: CustomApiService) { }
+    private _customApiService: CustomApiService) {
+      this.findMovieStart("brooklyn");
+     }
 
 
   callCustomAPI(movId) {
@@ -41,26 +43,26 @@ export class NewMovieReviewComponent implements OnInit {
       .subscribe(response => this.filmReviews = response, error => this.errorMessage = <any>error);
     console.log("***** Method finished. movId: " + movId);
     this.filmReviewBool = true;
-    // console.log("*** Comment: " + this.filmReviews.reviewComment);
   }
 
 
   newFilmReview: MovieReview; 
   submitReview(comment) {
+    //TODO: UserID, ReviewID??, Refresh New Comment ***
     this.newFilmReview = new MovieReview(10, 10,this.film.imdbID, comment, null, 5);
 
-    // this._customApiService.createReview(this.newFilmReview);
+    this._customApiService.createReview(this.newFilmReview)
+      .subscribe(
+        data => {
+          console.log("Review Posted Successfully");
+        },
+        error => {
+          console.log("Review Post Error!");
+        });
 
-      this._customApiService.createReview(this.newFilmReview)
-          .subscribe(
-              data => {
-                  console.log("Subscribe Finished");
-              },
-              error => {
-                  console.log("Subscribe Error!");
-              });
+    console.log(comment + " recorded for film: " + this.film.imdbID);
 
-    console.log(comment + " recorded.");
+    this.callCustomAPI(this.film.imdbID);
   }
 
   // callCustomAPI_ID(movId) {
