@@ -44,6 +44,15 @@ export class NewMovieReviewComponent implements OnInit {
     // console.log("*** Comment: " + this.filmReviews.reviewComment);
   }
 
+  // callCustomAPI_ID(movId) {
+  //   let self = this; // getReviews(movId) *****
+  //   self._customApiService.getReviewID(movId)
+  //     .subscribe(response => this.filmReviews = response, error => this.errorMessage = <any>error);
+  //   console.log("***** Method finished. movId: " + movId);
+  //   this.filmReviewBool = true;
+  //   // console.log("*** Comment: " + this.filmReviews.reviewComment);
+  // }
+
   movieSelected(title, id) {
     this.selMovieTitle = title;
     this.selMovieID = id;
