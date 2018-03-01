@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { AuthService } from "angular4-social-login";
 import { SocialUser } from "angular4-social-login";
 import { UserInfoComponent } from '../user-info/user-info.component';
 import { RouterLink, Router } from '@angular/router';
+import { ToastsManager } from 'ng2-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 
 @Component({
@@ -15,17 +18,19 @@ export class NavBarComponent implements OnInit {
   private user: SocialUser;
   private loggedIn: boolean;
 
-  constructor(private authService: AuthService, private router: Router) { 
-
+  constructor(private authService: AuthService, private router: Router, public toastr: ToastsManager, vcr: ViewContainerRef) { 
+    this.toastr.setRootViewContainerRef(vcr);
   }
 
   loginLogout(){
     if(this.loggedIn) { // If logged in, signOut and go home
       this.authService.signOut();
       this.router.navigate(['']);
+      this.toastr.info('You have logged out', null, {toastLife: 2000});
     } 
     else { // If not logged in, go to login page
       this.router.navigate(['login']);
+      this.toastr.info('You are logged out', null, {toastLife: 2000});
     }
   }
 
@@ -35,7 +40,10 @@ export class NavBarComponent implements OnInit {
       this.loggedIn = (user != null); // Checks if logged in
 
       if(this.loggedIn)
+      {
         this.router.navigate(['']);
+        this.toastr.success('Hello ' + user.firstName + '!', null, {toastLife: 2000});
+      }
     });
   }
 

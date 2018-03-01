@@ -23,6 +23,10 @@ import { UserInfoComponent } from './user-info/user-info.component';
 import { SocialLoginModule, AuthServiceConfig } from "angular4-social-login";
 import { GoogleLoginProvider, FacebookLoginProvider } from "angular4-social-login";
 
+// Toaster Notifications
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {ToastModule} from 'ng2-toastr/ng2-toastr';
+
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -64,7 +68,9 @@ let config = new AuthServiceConfig([
     BrowserModule,
     RouterModule.forRoot(routes),
     SocialLoginModule.initialize(config),
-    HttpModule
+    HttpModule,
+    BrowserAnimationsModule,
+    ToastModule.forRoot()
   ],
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy }
