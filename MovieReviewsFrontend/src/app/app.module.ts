@@ -31,7 +31,7 @@ const routes: Routes = [
   { path: 'moviereview', component: MovieReviewComponent},
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent},
-  { path: 'userinfo', component: UserInfoComponent}
+  { path: 'profile', component: UserInfoComponent}
 ]
 
 //config services for social login

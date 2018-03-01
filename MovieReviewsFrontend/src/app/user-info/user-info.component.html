@@ -1,9 +1,17 @@
-<div class="row" *ngIf="loginShow">
-      <!-- user image from social login -->
-  <img src="{{ user.photoUrl }}">
+<div id="wrap" class="container" *ngIf="loginShow && loggedIn">
+
+  <img src="{{ user.photoUrl }}" alt="Profile Picture"/>
+
+  <hr>
+
   <div>
     <!-- user info from social login -->
-    <h4>{{ user.name }}</h4>
-    <p>{{ user.email }}</p>
+    <h4 class="text-center">{{ user.name }}</h4>
+    <p class="text-center">{{ user.email }}</p>
   </div>
+
+  <br>
+
+  <input type="button" value="Logout" class="btn btn-block"/>
+
 </div>
