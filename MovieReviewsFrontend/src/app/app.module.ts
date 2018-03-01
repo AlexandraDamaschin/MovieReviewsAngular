@@ -5,7 +5,6 @@ import { FacebookModule } from 'ngx-facebook';
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { FooterComponent } from './footer/footer.component';
-import { ReviewedMovieListComponent } from './reviewed-movie-list/reviewed-movie-list.component';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { NewMovieReviewComponent } from './new-movie-review/new-movie-review.component';
 
@@ -16,7 +15,6 @@ import { HttpModule } from '@angular/http';
 import { HomeComponent } from './home/home.component';
 import { MovieReviewComponent } from './movie-review/movie-review.component';
 import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
 import { UserInfoComponent } from './user-info/user-info.component';
 
 //social login
@@ -34,7 +32,7 @@ const routes: Routes = [
   { path: 'newreview', component: NewMovieReviewComponent},
   { path: 'moviereview', component: MovieReviewComponent},
   { path: 'login', component: LoginComponent},
-  { path: 'register', component: RegisterComponent},
+  { path: 'register', redirectTo: 'login', pathMatch: 'full'},
   { path: 'profile', component: UserInfoComponent}
 ]
 
@@ -55,13 +53,11 @@ let config = new AuthServiceConfig([
     AppComponent,
     NavBarComponent,
     FooterComponent,
-    ReviewedMovieListComponent,
     MovieDetailsComponent,
     NewMovieReviewComponent,
     HomeComponent,
     MovieReviewComponent,
     LoginComponent,
-    RegisterComponent,
     UserInfoComponent
   ],
   imports: [

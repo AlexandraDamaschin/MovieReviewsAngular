@@ -29,7 +29,7 @@ export class NavBarComponent implements OnInit {
       this.router.navigate(['']);
     } 
     else { // If not logged in, go to login page
-      this.toastr.info('You are logged out', null, {toastLife: 2000});
+      // this.toastr.info('You are logged out', null, {toastLife: 2000});
       this.router.navigate(['login']);
     }
   }

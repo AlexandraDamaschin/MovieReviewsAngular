@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewContainerRef } from '@angular/core';
-import { ReviewedMovieListComponent } from '../reviewed-movie-list/reviewed-movie-list.component';
 import { ToastsManager } from 'ng2-toastr';
 import { AuthService } from 'angular4-social-login';
 import { SocialUser } from 'angular4-social-login';
