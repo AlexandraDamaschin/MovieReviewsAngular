@@ -15,8 +15,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 })
 export class NavBarComponent implements OnInit {
 
-  private user: SocialUser;
-  private loggedIn: boolean;
+  public user: SocialUser;
+  public loggedIn: boolean;
 
   constructor(private authService: AuthService, private router: Router, public toastr: ToastsManager, vcr: ViewContainerRef) { 
     this.toastr.setRootViewContainerRef(vcr);
