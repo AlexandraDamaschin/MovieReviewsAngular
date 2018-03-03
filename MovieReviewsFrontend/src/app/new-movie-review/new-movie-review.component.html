@@ -47,6 +47,7 @@
         <p>{{film.Plot}}</p>
         <br/>
         <br/>
+        <app-star-rating [rating]={{film.starRating}}></app-star-rating>        
         <h6 class="grayText actors">{{"Actors: "+film.Actors}}</h6>
         <h6 style="display: none;" #filmID>{{film.imdbID}}</h6>
       </div>
@@ -60,12 +61,13 @@
         <h1 id="closePopupX" (click)="closePopup()">X</h1>
         <div id="prevComments">
           <h3>What others are saying about {{film.Title}}</h3>
-          <div class="col-md-4"><img class="img-responsive" src={{film.Poster}}/></div>
+          <!-- <div class="col-md-4"><img class="img-responsive" src={{film.Poster}}/></div> -->
           <ul>
             <li style="color: white;" *ngFor="let rev of filmReviews">{{rev.reviewComment}}</li>
           </ul>
         </div>
         <input #review type="text" class="form-control" placeholder="Write Review.." *ngIf="popupShow"/>
+        <app-star-rating #starRating ></app-star-rating>
         <!-- <button (click)="submitReview()">Submit</button>   -->
         <input (click)="addReview(review.value)" type="submit" value="Submit Review" class="btn"/>
     </form> 

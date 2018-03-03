@@ -7,6 +7,7 @@ export class Movie {
     Plot: string;
     Director: string;
     Actors: string;
+    starRating: number = 4.5;
 
     constructor(movieID: string, title: string){
         this.imdbID = movieID;

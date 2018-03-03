@@ -18,6 +18,7 @@ import { MovieReviewComponent } from './movie-review/movie-review.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { MovieIconComponent } from './movie-icon/movie-icon.component';
+import { StarRatingComponent } from './star-rating/star-rating.component';
 
 
 const routes: Routes = [
@@ -41,7 +42,8 @@ const routes: Routes = [
     MovieReviewComponent,
     LoginComponent,
     RegisterComponent,
-    MovieIconComponent
+    MovieIconComponent,
+    StarRatingComponent
   ],
   imports: [
     BrowserModule,

@@ -39,7 +39,6 @@ export class NewMovieReviewComponent implements OnInit {
     private _movieService: MovieService, 
     private _customApiService: CustomApiService) { }
 
-
   callCustomAPI(movId) {
     let self = this;
     self._customApiService.getReviewsByID(movId)
@@ -53,6 +52,7 @@ export class NewMovieReviewComponent implements OnInit {
     self._customApiService.getReviews()
       .subscribe(response => this.reviewedMovies = response, error => this.errorMessage = <any>error);
     console.log("***** Method finished. *****");
+    console.log(this.reviewedMovies);
     this.filmReviewBool = true;
   }
 
