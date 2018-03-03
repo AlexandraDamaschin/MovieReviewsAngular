@@ -48,11 +48,6 @@ let config = new AuthServiceConfig([
   }
 ]);
 
-export function provideConfig() {
-  return config;
-}
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -68,15 +63,13 @@ export function provideConfig() {
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
-    SocialLoginModule,
+    SocialLoginModule.initialize(config),
     HttpModule,
     BrowserAnimationsModule,
     ToastModule.forRoot()
   ],
   providers: [
-    { provide: AuthServiceConfig, useClass: HashLocationStrategy, 
-
-      useFactory: provideConfig }
+    { provide: LocationStrategy, useClass: HashLocationStrategy }
   ],
   bootstrap: [AppComponent]
 })
