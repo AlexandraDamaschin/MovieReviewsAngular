@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StringList  } from '../../services/strings';
 
 @Component({
   selector: 'app-push-to-db',
@@ -10,6 +11,10 @@ export class PushToDbComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  }
+
+  callPost(){
+      StringList.CUSTOM_API_BASE;
   }
 
 }

@@ -68,11 +68,13 @@ export class NewMovieReviewComponent implements OnInit {
 
   closePopup() {
     this.popupShow = false;
+    console.log("Rating : " + this.film.starRating);
   }
 
   findMovieStart(x) {
     this.movieName = x;
     console.log("Movie searched ==> " + this.movieName);
+    // console.log("Rating : " + this.film.starRating);
     let self = this;
 
     if (this.movieName != "") {

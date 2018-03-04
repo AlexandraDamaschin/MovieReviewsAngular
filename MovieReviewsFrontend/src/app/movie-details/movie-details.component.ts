@@ -21,6 +21,8 @@ export class MovieDetailsComponent implements OnInit {
   // constructor(private _movieService: MovieService) {}
   constructor() {}
 
+  //Freezes page completely
+
   // findMovieStart(id){
   //   this.movieID = id;
   //   console.log("Movie searched ==> " + this.movieID);
