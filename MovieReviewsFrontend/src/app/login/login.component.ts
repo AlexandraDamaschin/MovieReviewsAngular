@@ -83,9 +83,10 @@ export class LoginComponent implements OnInit, OnDestroy {
   errors: string;
   isRequesting: boolean;
   submitted: boolean = false;
-  credentials: Credentials = { email: '', password: '' };
+  credentials: Credentials = { email: '', password: '' , ConfirmPassword: ''};
   email: string;
   password: string;
+  ConfirmPassword: string;
 
   authToken: any;
   user: any;
@@ -129,17 +130,19 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   
     //store data of users as JSON
-    storeUserData(token, email,password) {
+    storeUserData(token, email,password,ConfirmPassword) {
       localStorage.setItem('auth_token', token);
       console.log(token);
       localStorage.setItem('email', JSON.stringify(this.credentials.email));
       console.log(JSON.stringify(this.credentials.email));
       localStorage.setItem('password', JSON.stringify(this.credentials.password));
       console.log(JSON.stringify(this.credentials.password));
-    
+      localStorage.setItem('password', JSON.stringify(this.credentials.ConfirmPassword));
+      console.log(JSON.stringify(this.credentials.ConfirmPassword));
       this.authToken = token;
       this.email = email;
       this.password = password;
+      this.ConfirmPassword = ConfirmPassword;
       
     }
   
