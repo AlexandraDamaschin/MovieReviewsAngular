@@ -56,7 +56,6 @@ const routes: Routes = [
     FacebookModule.forRoot(),
     HttpModule,
     HttpClientModule,
-    
     FormsModule
   ],
   providers: [ ConfigService,UserServiceService, { 

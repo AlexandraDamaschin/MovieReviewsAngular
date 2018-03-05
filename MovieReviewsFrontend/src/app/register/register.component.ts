@@ -17,9 +17,9 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private userService: UserServiceService,
-    private router: Router) {
+    private router: Router
+  ) {
   }
-
 
   ngOnInit() {
   }
