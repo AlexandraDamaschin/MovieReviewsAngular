@@ -1,75 +1,72 @@
 <form>
-    <div class="row">
-        <div class="col-md-9">
-          <input #movieName type="text" class="form-control" style="border-radius: 2px; font-size: 20px; text-align: center;" placeholder="Search for a new movie to review"/>
-        </div>
-        <div class="col-md-3">
-          <button class="btn btn-success btn-block btnScale"  style="border-radius: 2px; font-size: 20px;" (click)="findMovieStart(movieName.value)">Find Movie</button>
-        </div>
-    </div> 
-  </form>
-  
-  <br>
-  
-  <!-- <input #imdbTest type="text" placeholder="Test Imdb ID"/>
-  <button (click)="callCustomAPI(imdbTest.innerHTML)">Custom API Call (Test)</button>
-  <h1 *ngIf="filmReviewBool"> ==>
-    <ul>
-      <li *ngFor="let rev of filmReviews">{{rev.reviewComment}}</li>
-    </ul>
-    <==
-  </h1> -->
-  
-  <!-- Reviewed Movies -->
-  <hr>
-  <button (click)="callCustomAPI_List()">Show Reviewed Movies</button>
-  <h4>Reviewed Movies ()</h4>
-  <ul>
-    <div #sampleID style="box-shadow: 0px 1px 1px gray; padding: 10px; margin-bottom: 5px; cursor: pointer;" *ngFor="let movRev of reviewedMovies" (click)="movieSelected('test', sampleID.innerHTML)">{{movRev.imdbId}}</div>
-  </ul>
-  
-  <!-- <ul>
-    <li *ngFor="let x of movieReviews"></li>
-  </ul> -->
-  
-  <!-- <app-movie-icon (click)="movieSelected(filmTitle.innerHTML, filmID.innerHTML)" *ngFor="let movRev of reviewedMovies" [Imdb]="movRev"></app-movie-icon> -->
-  
-  <hr>
-  
-  <div *ngIf="searchBool && validMovie" class="movieOutput" (click)="movieSelected(filmTitle.innerHTML, filmID.innerHTML)">
-    <div class="row">
-      <div class="col-md-4"><img class="img-responsive" src={{film.Poster}}/></div>
-      <div class="col-md-8" style="padding-top: 20px;">
-        <h2 #filmTitle>{{film.Title+" ("+film.Year+")"}}</h2>
-        <h5 class="grayText">{{"Director: "+film.Director}}</h5>
-        <h5 class="grayText">{{"Rated: "+film.Rated}}</h5>
-        <hr/>
-        <p>{{film.Plot}}</p>
-        <br/>
-        <br/>
-        <!-- <app-star-rating [rating]='{{film.starRating}}'></app-star-rating>         -->
-        <h6 class="grayText actors">{{"Actors: "+film.Actors}}</h6>
-        <h6 style="display: none;" #filmID>{{film.imdbID}}</h6>
+  <div class="row">
+      <div class="col-md-9">
+        <input #movieName type="text" class="form-control" style="border-radius: 2px; font-size: 20px; text-align: center;" placeholder="Search for a new movie to review"/>
       </div>
+      <div class="col-md-3">
+        <button class="btn btn-success btn-block btnScale"  style="border-radius: 2px; font-size: 20px;" (click)="findMovieStart(movieName.value)">Find Movie</button>
+      </div>
+  </div> 
+</form>
+
+<br>
+
+
+<div *ngIf="searchBool && validMovie" class="movieOutput" (click)="movieSelected(filmTitle.innerHTML, filmID.innerHTML)">
+  <div class="row">
+    <div class="col-md-4"><img class="img-responsive" [src]=[film.Poster]/></div>
+    <div class="col-md-8" style="padding-top: 20px;">
+      <h2 #filmTitle>{{film.Title+" ("+film.Year+")"}}</h2>
+      <h5 class="grayText">{{"Director: "+film.Director}}</h5>
+      <h5 class="grayText">{{"Rated: "+film.Rated}}</h5>
+      <hr/>
+      <p>{{film.Plot}}</p>
+      <br/>
+      <br/>
+      <app-star-rating [rating]=[film.starRating]></app-star-rating>
+      <h6 class="grayText actors">{{"Actors: "+film.Actors}}</h6>
+      <h6 style="display: none;" #filmID>{{film.imdbID}}</h6>
     </div>
   </div>
-  
-  
-  <div id="darkBackground" *ngIf="popupShow" (click)="closePopup()"></div>
-  <div id="popup" *ngIf="popupShow">
-    <form ng-submit="doPUT()">
-        <h1 id="closePopupX" (click)="closePopup()">X</h1>
-        <div id="prevComments">
-          <h3>What others are saying about {{film.Title}}</h3>
-          <!-- <div class="col-md-4"><img class="img-responsive" src={{film.Poster}}/></div> -->
-          <ul>
-            <li style="color: white;" *ngFor="let rev of filmReviews">{{rev.reviewComment}}</li>
-          </ul>
-        </div>
-        <input #review type="text" class="form-control" placeholder="Write Review.." *ngIf="popupShow"/>
-        <app-star-rating #starRating ></app-star-rating>
-        <!-- <button (click)="submitReview()">Submit</button>   -->
-        <input (click)="addReview(review.value)" type="submit" value="Submit Review" class="btn"/>
-    </form> 
+</div>
+
+<hr>
+
+<!-- Reviewed Movies -->
+<button (click)="callCustomAPI('')">Show Movies With Reviews</button>
+<h3 *ngIf="filmReviewBool"> ==>
+  <ul>
+    <li style="cursor: pointer;" #testVal (click)="movieSelected('TEST', testVal.innerHTML)" *ngFor="let rev of filmReviews">{{rev.imdbId}}</li>
+  </ul>
+
+  <==
+</h3>
+<!-- End Reviewed Movies -->
+
+
+
+<!-- Sample Comment Display -->
+
+<!-- <button (click)="callCustomAPI('')">Show Comments</button>
+<h3 *ngIf="filmReviewBool">
+  <ul>
+    <li style="cursor: pointer;" #testVal (click)="movieSelected('TEST', testVal.innerHTML)" *ngFor="let rev of filmReviews">{{rev.reviewComment}}</li>
+  </ul>
+</h3> -->
+
+<!-- End Sample Comment Display -->
+
+
+<div id="darkBackground" *ngIf="popupShow" (click)="closePopup()"></div>
+<div id="popup" *ngIf="popupShow">
+  <h1 id="closePopupX" (click)="closePopup()">X</h1>
+  <div id="prevComments">
+    <h3>What others are saying about {{film.Title}}</h3>
+    <ul>
+      <li style="color: white;" *ngFor="let rev of filmReviews">{{rev.reviewComment}}</li>
+    </ul>
   </div>
-  
+  <input #newReviewText type="text" class="form-control" placeholder="Write Review.."/>
+  <!-- <button (click)="submitReview(newReviewText.value)">Submit</button>         -->
+  <button>Submit</button>        
+</div>

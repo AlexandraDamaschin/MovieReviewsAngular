@@ -4,8 +4,6 @@ import { CustomApiService } from '../../services/custom-api.service';
 import { Movie } from '../../models/movie';
 import { MovieReview } from '../../models/movie-review';
 import { HttpModule } from '@angular/http';
-import { MovieIconComponent } from '../movie-icon/movie-icon.component';
-import {} from '../../services/push-revire-to-db'
 
 @Component({
   selector: 'app-new-movie-review',
@@ -25,9 +23,6 @@ export class NewMovieReviewComponent implements OnInit {
   filmReviews: MovieReview;
   filmReviewBool: boolean = false;
 
-  reviewedMovies: MovieReview;
-  // reviewedMoviesDistinct: MovieReview;
-
   errorMessage: string;
   movieName: string;
 
@@ -37,25 +32,47 @@ export class NewMovieReviewComponent implements OnInit {
 
   constructor(
     private _movieService: MovieService, 
-    private _customApiService: CustomApiService) { }
+    private _customApiService: CustomApiService) {
+      this.findMovieStart("brooklyn");
+     }
+
 
   callCustomAPI(movId) {
-    let self = this;
+    let self = this; // getReviews(movId) *****
     self._customApiService.getReviewsByID(movId)
       .subscribe(response => this.filmReviews = response, error => this.errorMessage = <any>error);
     console.log("***** Method finished. movId: " + movId);
     this.filmReviewBool = true;
   }
 
-  callCustomAPI_List() {
-    let self = this;
-    self._customApiService.getReviews()
-      .subscribe(response => this.reviewedMovies = response, error => this.errorMessage = <any>error);
-    console.log("***** Method finished. *****");
-    console.log(this.reviewedMovies);
-    this.filmReviewBool = true;
-  }
 
+  newFilmReview: MovieReview; 
+ /* submitReview(comment) {
+    //TODO: UserID, ReviewID??, Refresh New Comment ***
+    this.newFilmReview = new MovieReview(10, 10,this.film.imdbID, comment, null, 5);
+
+    this._customApiService.createReview(this.newFilmReview)
+      .subscribe(
+        data => {
+          console.log("Review Posted Successfully");
+        },
+        error => {
+          console.log("Review Post Error!");
+        });
+
+    console.log(comment + " recorded for film: " + this.film.imdbID);
+
+    this.callCustomAPI(this.film.imdbID);
+  }*/
+
+  // callCustomAPI_ID(movId) {
+  //   let self = this; // getReviews(movId) *****
+  //   self._customApiService.getReviewID(movId)
+  //     .subscribe(response => this.filmReviews = response, error => this.errorMessage = <any>error);
+  //   console.log("***** Method finished. movId: " + movId);
+  //   this.filmReviewBool = true;
+  //   // console.log("*** Comment: " + this.filmReviews.reviewComment);
+  // }
 
   movieSelected(title, id) {
     this.selMovieTitle = title;
@@ -68,13 +85,11 @@ export class NewMovieReviewComponent implements OnInit {
 
   closePopup() {
     this.popupShow = false;
-    console.log("Rating : " + this.film.starRating);
   }
 
   findMovieStart(x) {
     this.movieName = x;
     console.log("Movie searched ==> " + this.movieName);
-    // console.log("Rating : " + this.film.starRating);
     let self = this;
 
     if (this.movieName != "") {
@@ -85,14 +100,6 @@ export class NewMovieReviewComponent implements OnInit {
     } 
     else
       console.log("No movie!");
-  }
-
-  addReview(review){
-    let self = this;
-
-    if (this.movieName != "") {
-      self._customApiService.addReviewByID(this.film.imdbID, review);
-    }
   }
 
   ngOnInit(): void { }
