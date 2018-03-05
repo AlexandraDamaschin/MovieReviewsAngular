@@ -132,8 +132,8 @@ export class LoginComponent implements OnInit, OnDestroy {
 
 
 
-
-  //store data of users as JSON
+//edit for git
+  //store data of users  as JSON
   storeUserData(token, email, password, ConfirmPassword) {
     localStorage.setItem('auth_token', token);
     console.log(token);
