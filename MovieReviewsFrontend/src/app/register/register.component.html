@@ -17,19 +17,19 @@
 						<input id="first-name" type="text" required name="firstName" class="form-control" placeholder="Your first name" tmFocus ngModel>
 					</div>
 
-          	<div class="form-group">
+					<div class="form-group">
 						<label for="last-name">Last name</label>
 						<input id="last-name" type="text" required name="lastName" class="form-control" placeholder="Your last name" ngModel>
 					</div>
- 
+
 					<div class="form-group">
 						<label for="user-name">User name</label>
 						<input id="user-name" type="text" required name="userName" class="form-control" placeholder="Create Username" ngModel>
 					</div>
 
-          <div class="form-group">
+					<div class="form-group">
 						<label for="email">Email</label>
-						<input id="email" type="text" required name="email" validateEmail class="form-control" placeholder="Email" ngModel  #email="ngModel">
+						<input id="email" type="text" required name="email" validateEmail class="form-control" placeholder="Email" ngModel #email="ngModel">
 						<small [hidden]="email.valid || (email.pristine && !submitted)" class="text-danger">Please enter a valid email</small>
 					</div>
 
@@ -40,16 +40,16 @@
 
 					<div class="form-group">
 						<label for="ConfirmPassword">Confirm Password</label>
-						<input type="password" required name="password" class="form-control" id="ConfirmPassword">
-					  </div>
-					  
-         
-          <div class="form-group">
+						<input id="ConfirmPassword" type="password" required name="password" class="form-control" placeholder="Confirmed Password"
+						 ngModel>
+					</div>
+
+					<div class="form-group">
 						<label for="location">Location</label>
 						<input id="location" type="text" required name="location" class="form-control" placeholder="Location" ngModel>
 					</div>
-  
-				<div class="form-group">
+
+					<div class="form-group">
 						<button type="submit" class="btn btn-primary" [disabled]="f.invalid || isRequesting">Sign Up</button>
 						<app-spinner [isRunning]="isRequesting"></app-spinner>
 					</div>
