@@ -11,13 +11,10 @@ import { BaseService } from "./base.service";
 
 //import '../../rxjs-operators';
 
-
-
 @Injectable()
 export class UserServiceService extends BaseService {
 
   baseUrl: string = '';
-
 
   private _authNavStatusSource = new BehaviorSubject<boolean>(false);
 
