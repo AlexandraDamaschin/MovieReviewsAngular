@@ -1,7 +1,9 @@
 export interface UserRegistration {
     email: string;  
     password: string;
-    firstName: string;
-    lastName:  string;
-    location: string;
+    ConfirmedPassword: string;
+    username: string;
+    //firstName: string;
+    //lastName:  string;
+    //location: string;
 }

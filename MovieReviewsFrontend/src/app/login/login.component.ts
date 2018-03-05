@@ -124,14 +124,23 @@ export class LoginComponent implements OnInit, OnDestroy {
     }
   }
 
+
+
+
+  
     //store data of users as JSON
-    storeUserData(token, email, password) {
+    storeUserData(token, email,password) {
       localStorage.setItem('auth_token', token);
+      console.log(token);
       localStorage.setItem('email', JSON.stringify(this.credentials.email));
+      console.log(JSON.stringify(this.credentials.email));
       localStorage.setItem('password', JSON.stringify(this.credentials.password));
+      console.log(JSON.stringify(this.credentials.password));
+    
       this.authToken = token;
       this.email = email;
       this.password = password;
+      
     }
   
     //store token
@@ -140,7 +149,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       this.authToken = token;
     }
   
-    //store token for keep user loggin for certain amount of time
+    //store token for keeping a user logged in for a certain amount of time
     loggedIn() {
       return tokenNotExpired('auth_token');
     }
