@@ -16,7 +16,7 @@ import {BaseService} from "./base.service";
 @Injectable()
 export class UserServiceService extends BaseService {
   
-  baseUrl: string = '';
+  baseUrl: string = 'http://localhost:63548/';
   
     
     private _authNavStatusSource = new BehaviorSubject<boolean>(false);
@@ -38,7 +38,7 @@ export class UserServiceService extends BaseService {
       let headers = new Headers({ 'Content-Type': 'application/json' });
       let options = new RequestOptions({ headers: headers });
   
-      return this.http.post(this.baseUrl + "/accounts", body, options)
+      return this.http.post(this.baseUrl + "api/Account/RegisterExternal", body, options)
         .map(res => true)
         .catch(this.handleError);
     }  
@@ -49,7 +49,7 @@ export class UserServiceService extends BaseService {
   
       return this.http
         .post(
-        this.baseUrl + '/auth/login',
+        this.baseUrl + 'api/Account/AddExternalLogin',
         JSON.stringify({ userName, password }),{ headers }
         )
         .map(res => res.json())
