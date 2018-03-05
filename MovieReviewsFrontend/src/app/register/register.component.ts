@@ -29,7 +29,7 @@ export class RegisterComponent implements OnInit {
     this.isRequesting = true;
     this.errors = '';
     if (valid) {
-      this.userService.register(value.email, value.password, value.ConfirmedPassword, value.username)
+      this.userService.register(value.email, value.password, value.ConfirmPassword, value.username)
         .finally(() => this.isRequesting = false)
         .subscribe(
           result => {
