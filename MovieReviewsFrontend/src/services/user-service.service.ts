@@ -38,7 +38,7 @@ export class UserServiceService extends BaseService {
       let headers = new Headers({ 'Content-Type': 'application/json' });
       let options = new RequestOptions({ headers: headers });
   
-      return this.http.post(this.baseUrl + "api/Account/RegisterExternal", body, options)
+      return this.http.post(this.baseUrl + "api/Account/Register", body, options)
         .map(res => true)
         .catch(this.handleError);
     }  
