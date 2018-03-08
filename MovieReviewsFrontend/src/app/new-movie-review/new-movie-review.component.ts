@@ -86,6 +86,7 @@ export class NewMovieReviewComponent implements OnInit {
     this.selMovieTitle = title;
     this.selMovieID = id;
     this.popupShow = true;
+    document.getElementsByTagName("body")[0].style.overflow = "hidden";
     console.log("Movie: " + this.selMovieTitle + " - imdbID: " + this.selMovieID);
 
     this.callCustomAPI(this.selMovieID);
@@ -98,6 +99,7 @@ export class NewMovieReviewComponent implements OnInit {
 
   closePopup() {
     this.popupShow = false;
+    document.getElementsByTagName("body")[0].style.overflow = "auto";
   }
 
   findMovieStart(x) {

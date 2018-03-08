@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() { 
-      
+    document.getElementsByTagName("body")[0].style.overflow = "auto";
   }
 
   login(username, password) {
