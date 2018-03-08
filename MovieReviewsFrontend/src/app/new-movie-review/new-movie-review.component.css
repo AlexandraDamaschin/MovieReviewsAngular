@@ -39,11 +39,19 @@ form {
 #popup input {
     background-color: transparent;
     /* border: none; */
-    font-size: 35px;
+    font-size: 20px;
     text-align: center;
     /* border-top: 3px solid gray; */
     border: none;
     border-radius: 0px;
+}
+
+#popup .btn {  
+    background-color: rgb(6, 161, 6);
+    color: white;
+    font-size: 20px;   
+    height: 45px;
+    width: 100px;    
 }
 
 ul li {

@@ -5,6 +5,7 @@ import { Movie } from '../../models/movie';
 import { MovieReview } from '../../models/movie-review';
 import { HttpModule } from '@angular/http';
 import { AuthService } from 'angular4-social-login';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new-movie-review',
@@ -56,6 +57,8 @@ export class NewMovieReviewComponent implements OnInit {
 
   newFilmReview: MovieReview; 
   submitReview(comment) {
+    if(comment == "")
+      return false;
     //TODO: UserID, ReviewID??, Refresh New Comment ***
     this.newFilmReview = new MovieReview(10, 10,this.film.imdbID, comment, null, this.starCount);
 
@@ -70,7 +73,8 @@ export class NewMovieReviewComponent implements OnInit {
 
     console.log(comment + " recorded for film: " + this.film.imdbID);
 
-    this.callCustomAPI(this.film.imdbID);
+    alert("Review submitted!");
+    this.popupShow = false;
   }
 
   // callCustomAPI_ID(movId) {
