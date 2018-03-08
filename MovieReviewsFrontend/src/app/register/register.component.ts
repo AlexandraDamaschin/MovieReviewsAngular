@@ -1,8 +1,11 @@
+import { validate } from 'codelyzer/walkerFactory/walkerFn';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { UserRegistration } from '../../services/user.registration';
 import { UserServiceService } from '../../services/user-service.service';
+
+
 
 @Component({
   selector: 'app-register',
@@ -15,12 +18,17 @@ export class RegisterComponent implements OnInit {
   isRequesting: boolean;
   submitted: boolean = false;
 
+
+
   constructor(
     private userService: UserServiceService,
-    private router: Router
-  ) {
-  }
-
+    private router: Router,
+    
+  ) {}
+    
+   
+    
+  
   ngOnInit() {
   }
 
@@ -40,4 +48,5 @@ export class RegisterComponent implements OnInit {
           errors => this.errors = errors);
     }
   }
+  
 }

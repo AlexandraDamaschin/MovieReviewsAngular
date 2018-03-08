@@ -22,9 +22,28 @@ import { RegisterComponent } from './register/register.component';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { ConfigService } from '../services/config.service';
 
+import { SocialLoginModule, AuthServiceConfig } from "angular4-social-login";
+import { GoogleLoginProvider, FacebookLoginProvider } from "angular4-social-login";
+ 
 
 import {  XHRBackend } from '@angular/http';
 import { AuthenticateXHRBackend } from './authenticate-xhr.backend';
+import { PasswordValidation } from './password-validation/password-validation.component';
+
+
+
+
+
+let config = new AuthServiceConfig([
+  {
+    id: GoogleLoginProvider.PROVIDER_ID,
+    provider: new GoogleLoginProvider("937448718186-k53n2h1jodv0453s1ovmc81k2moa9cv6.apps.googleusercontent.com")
+  },
+  {
+    id: FacebookLoginProvider.PROVIDER_ID,
+    provider: new FacebookLoginProvider("132886090872671")
+  }
+]);
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -49,6 +68,7 @@ const routes: Routes = [
     RegisterComponent,
   
     SpinnerComponent
+
   ],
   imports: [
     BrowserModule,
@@ -56,7 +76,8 @@ const routes: Routes = [
     FacebookModule.forRoot(),
     HttpModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    SocialLoginModule.initialize(config)
   ],
   providers: [ ConfigService,UserServiceService, { 
     provide:   XHRBackend,
