@@ -29,6 +29,7 @@ export class NewMovieReviewComponent implements OnInit {
   selMovieTitle: string;
   selMovieID: string;
   selMoviePrice: string;
+  starCount: number = 4;
 
   constructor(
     private _movieService: MovieService, 
@@ -49,7 +50,7 @@ export class NewMovieReviewComponent implements OnInit {
   newFilmReview: MovieReview; 
   submitReview(comment) {
     //TODO: UserID, ReviewID??, Refresh New Comment ***
-    this.newFilmReview = new MovieReview(10, 10,this.film.imdbID, comment, null, 5);
+    this.newFilmReview = new MovieReview(10, 10,this.film.imdbID, comment, null, this.starCount);
 
     this._customApiService.createReview(this.newFilmReview)
       .subscribe(
@@ -81,6 +82,11 @@ export class NewMovieReviewComponent implements OnInit {
     console.log("Movie: " + this.selMovieTitle + " - imdbID: " + this.selMovieID);
 
     this.callCustomAPI(this.selMovieID);
+  }
+
+  starCheck(x): void{
+    console.log("Star: " + x);
+    this.starCount = x;
   }
 
   closePopup() {

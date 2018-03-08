@@ -2,9 +2,6 @@ form {
     max-width: 900px;
 }
 
-
-
-
 #darkBackground {
     position: absolute;
     top: 0px;
@@ -19,17 +16,33 @@ form {
     left: 20%;
     right: 20%;
     height: 350px;
-    background-color: rgba(0,0,0,.6);
-    color: #9c9c9c;
+    background-color: white;
+}
+
+.submitReviewBtn {
+    font-size: 20px;
+    background-color: white;
+    color: #8d8d8d;
+    text-align: bottom left;
+    cursor: pointer;
+    transition: .1s;
+}
+
+.submitReviewBtn:hover {
+    transform: scale(1.05,1.05);
+}
+
+.submitReviewBtn:active {
+    transform: scale(0.98,0.98);
 }
 
 #popup input {
     background-color: transparent;
-    border: none;
+    /* border: none; */
     font-size: 35px;
     text-align: center;
-    color: #f3f3f3;
-    border-top: 3px solid gray;
+    /* border-top: 3px solid gray; */
+    border: none;
     border-radius: 0px;
 }
 
@@ -43,9 +56,18 @@ ul {
     padding-top: 10px;
 }
 
+.fa-star {
+    text-shadow: 0px 0px 2px rgb(75, 75, 75);
+    color: white;
+    cursor: pointer;
+}
+
+.checked {
+    color: rgb(247, 231, 16);
+}
 
 #prevComments {
-    height: 225px;
+    height: 190px;
     text-align: center;
 }
 

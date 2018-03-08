@@ -62,9 +62,24 @@
   <div id="prevComments">
     <h3>What others are saying about {{film.Title}}</h3>
     <ul>
-      <li style="color: white;" *ngFor="let rev of filmReviews">{{rev.reviewComment}}</li>
+      <li *ngFor="let rev of filmReviews">"{{rev.reviewComment}} Star rating: {{rev.starRating}}"</li>
     </ul>
   </div>
-  <input #newReviewText type="text" class="form-control" placeholder="Write Review.."/>
-  <button (click)="submitReview(newReviewText.value)">Submit</button>        
+  <hr>
+  <div class="row">
+    <div class="col-sm-7">
+      <input #newReviewText type="text" class="form-control" placeholder="Write Review.."/>
+    </div>
+    <div class="col-sm-3">
+      <span class="fa fa-star {{starCount >= 1 ? 'checked' : ''}}" (click)="starCheck(1)"></span>
+      <span class="fa fa-star {{starCount >= 2 ? 'checked' : ''}}" (click)="starCheck(2)"></span>
+      <span class="fa fa-star {{starCount >= 3 ? 'checked' : ''}}" (click)="starCheck(3)"></span>
+      <span class="fa fa-star {{starCount >= 4 ? 'checked' : ''}}" (click)="starCheck(4)"></span>
+      <span class="fa fa-star {{starCount >= 5 ? 'checked' : ''}}" (click)="starCheck(5)"></span>
+    </div>
+    <div class="col-sm-2">
+      <button class="submitReviewBtn btn btn-block" (click)="submitReview(newReviewText.value)">Submit</button>  
+    </div>
+  </div>
+        
 </div>
