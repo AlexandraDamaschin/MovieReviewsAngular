@@ -61,9 +61,10 @@
   <h1 id="closePopupX" (click)="closePopup()">X</h1>
   <div id="prevComments">
     <h3>What others are saying about {{film.Title}}</h3>
-    <ul>
+    <!-- <ul>
       <li *ngFor="let rev of filmReviews">"{{rev.reviewComment}} Star rating: {{rev.starRating}}"</li>
-    </ul>
+    </ul> -->
+    <app-review-comment-line *ngFor="let rev of filmReviews" [review]="rev"></app-review-comment-line>
   </div>
   <hr>
   <div class="row">

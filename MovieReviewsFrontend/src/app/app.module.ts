@@ -24,6 +24,7 @@ import { GoogleLoginProvider, FacebookLoginProvider } from "angular4-social-logi
 // Toaster Notifications
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ToastModule} from 'ng2-toastr/ng2-toastr';
+import { ReviewCommentLineComponent } from './review-comment-line/review-comment-line.component';
 
 
 const routes: Routes = [
@@ -58,7 +59,8 @@ let config = new AuthServiceConfig([
     HomeComponent,
     MovieReviewComponent,
     LoginComponent,
-    UserInfoComponent
+    UserInfoComponent,
+    ReviewCommentLineComponent
   ],
   imports: [
     BrowserModule,

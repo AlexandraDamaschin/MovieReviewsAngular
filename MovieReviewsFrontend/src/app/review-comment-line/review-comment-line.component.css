@@ -1,0 +1,8 @@
+.fa-star {
+    text-shadow: 0px 0px 2px rgb(75, 75, 75);
+    color: white;
+}
+
+.checked {
+    color: rgb(247, 231, 16);
+}

@@ -60,6 +60,7 @@ ul {
     text-shadow: 0px 0px 2px rgb(75, 75, 75);
     color: white;
     cursor: pointer;
+    font-size: 28px;
 }
 
 .checked {
