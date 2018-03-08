@@ -25,6 +25,8 @@ import { GoogleLoginProvider, FacebookLoginProvider } from "angular4-social-logi
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ToastModule} from 'ng2-toastr/ng2-toastr';
 import { ReviewCommentLineComponent } from './review-comment-line/review-comment-line.component';
+import { UserServiceService } from '../services/user.registration.service';
+import { ConfigService } from '../services/config.service';
 
 
 const routes: Routes = [
@@ -71,6 +73,8 @@ let config = new AuthServiceConfig([
     ToastModule.forRoot()
   ],
   providers: [
+    ConfigService,
+    UserServiceService,
     { provide: LocationStrategy, useClass: HashLocationStrategy }
   ],
   bootstrap: [AppComponent]

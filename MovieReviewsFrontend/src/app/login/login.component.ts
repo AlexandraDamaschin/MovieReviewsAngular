@@ -3,6 +3,13 @@ import { AuthService } from "angular4-social-login";
 import { FacebookLoginProvider, GoogleLoginProvider } from "angular4-social-login";
 import { ToastsManager } from 'ng2-toastr';
 
+import { Router } from '@angular/router';
+
+import { UserRegistration } from '../../services/user.registration';
+import { UserServiceService } from '../../services/user.registration.service';
+
+// import { validate } from 'codelyzer/walkerFactory/walkerFn';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -10,9 +17,17 @@ import { ToastsManager } from 'ng2-toastr';
 })
 export class LoginComponent implements OnInit {
 
+  errors: string;
+  isRequesting: boolean;
+  submitted: boolean = false;
+
   loginShow: boolean = true;
 
-  constructor( private authService: AuthService, public toastr: ToastsManager, vcr: ViewContainerRef) { 
+  constructor( private authService: AuthService, 
+    public toastr: ToastsManager, 
+    vcr: ViewContainerRef,
+    private userService: UserServiceService,
+    private router: Router,) { 
     this.toastr.setRootViewContainerRef(vcr);
   }
 
@@ -47,17 +62,69 @@ export class LoginComponent implements OnInit {
   }
 
 
-  register() {
+  registerShow() {
+    this.loginShow = false;
+  }
+
+  register(fn, ln, un, em, p1, p2){
+    if(p1 != p2) {
+      alert("Passwords must match!");
+      return false;
+    }
+
     if (!this.loginShow) {
       // Register code goes inside this IF
-      console.log("Register");
+
+    this.submitted = true;
+    this.isRequesting = true;
+    this.errors = '';
+
+      this.userService.register(em, p1, p2, un)
+        .finally(() => this.isRequesting = false)
+        .subscribe(
+          result => {
+            if (result) {
+              this.router.navigate(['/login'], { queryParams: { brandNew: true, email: em } });
+            }
+          },
+          errors => this.errors = errors);
+    
+
+      console.log("Register --> " + fn + " " + ln + " " + un + " " + em + " " + p1 + " " + p2 + " ");
     }
-    this.loginShow = false;
   }
 
   formSubmit() {
     console.log("formSubmit");
   }
+
+  testLogin(){
+    console.log("testlogin");
+  }
+
+  // Keiths Register function
+  // registerUser({ value, valid }: { value: UserRegistration, valid: boolean }) {
+  //   this.submitted = true;
+  //   this.isRequesting = true;
+  //   this.errors = '';
+
+  //   if(value.password != value.ConfirmPassword) {
+  //     alert("Passwords must match!");
+  //     return false;
+  //   }
+
+  //   if (valid) {
+  //     this.userService.register(value.email, value.password, value.ConfirmPassword, value.username)
+  //       .finally(() => this.isRequesting = false)
+  //       .subscribe(
+  //         result => {
+  //           if (result) {
+  //             this.router.navigate(['/login'], { queryParams: { brandNew: true, email: value.email } });
+  //           }
+  //         },
+  //         errors => this.errors = errors);
+  //   }
+  // }
 
 
   backToLogin() {
@@ -66,3 +133,8 @@ export class LoginComponent implements OnInit {
 
 
 }
+
+
+
+
+

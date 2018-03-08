@@ -1,20 +1,38 @@
 <div id="wrap">
   <form ng-submit="formSubmit()" class="form">
-    <div class="form-group" *ngIf="!loginShow">
-      <input type="text" class="form-control" ng-model="username" placeholder="Username" required="" />
+
+    <!-- First Name -->
+    <div class="form-group" [hidden]="loginShow">
+      <input #firstName type="text" class="form-control" ng-model="firstname" placeholder="First Name" />
     </div>
+
+    <!-- Last Name -->
+    <div class="form-group" [hidden]="loginShow">
+      <input #lastName type="text" class="form-control" ng-model="lastname" placeholder="Last Name" />
+    </div>
+
+    <!-- Username -->
+    <div class="form-group" [hidden]="loginShow">
+      <input #userName type="text" class="form-control" ng-model="username" placeholder="Username" />
+    </div>
+
+    <!-- Email -->
     <div class="form-group">
-      <input type="text" class="form-control" ng-model="email" placeholder="E-mail" required="" />
+      <input #email type="email" class="form-control" ng-model="email" placeholder="E-mail" required />
     </div>
+
+    <!-- Password 1 -->
     <div class="form-group">
-      <input type="password" class="form-control" ng-model="password" placeholder="Password" required="" />
+      <input #password1 type="password" class="form-control" ng-model="password" placeholder="Password" required />
     </div>
-    <div class="form-group" *ngIf="!loginShow">
-      <input type="text" class="form-control" ng-model="password2" placeholder="Confirm Password" required="" />
+    
+    <!-- Password 2 -->
+    <div class="form-group" [hidden]="loginShow">
+      <input #password2 type="password" class="form-control" ng-model="password2" placeholder="Confirm Password" required />
     </div>
+
     <div class="form-group" *ngIf="loginShow">
-      <button type="submit" class="btn btn-success btn-block">Login
-      </button>
+      <button type="submit" class="btn btn-success btn-block">Login</button>
     </div>
   </form>
 
@@ -44,7 +62,9 @@
   <br>
 
   <div class="row">
-    <button class="btn btn-block btn-{{loginShow ? 'default' : 'success'}}" (click)="register()">Register</button>
+      <!-- firstName.value, lastName.value, userName.value, email.value, password1.value, password2.value -->
+    <button *ngIf="loginShow" class="btn btn-block btn-{{loginShow ? 'default' : 'success'}}" (click)="registerShow()">Register</button>
+    <button *ngIf="!loginShow" class="btn btn-block btn-{{loginShow ? 'default' : 'success'}}" (click)="register(firstName.value, lastName.value, userName.value, email.value, password1.value, password2.value)">Register</button>
   </div>
   <div class="row" *ngIf="!loginShow">
     <button class="btn btn-block btn-link" (click)="backToLogin()">Back to Login</button>
