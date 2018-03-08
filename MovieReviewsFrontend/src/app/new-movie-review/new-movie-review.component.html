@@ -67,7 +67,7 @@
     <app-review-comment-line *ngFor="let rev of filmReviews" [review]="rev"></app-review-comment-line>
   </div>
   <hr>
-  <div class="row">
+  <div class="row" *ngIf="loggedIn">
     <div class="col-sm-7">
       <input #newReviewText type="text" class="form-control" placeholder="Write Review.."/>
     </div>
@@ -81,6 +81,9 @@
     <div class="col-sm-2">
       <button class="submitReviewBtn btn btn-block" (click)="submitReview(newReviewText.value)">Submit</button>  
     </div>
+  </div>
+  <div class="text-center" *ngIf="!loggedIn">
+    <button style="cursor: pointer;" class="btn btn-info" [routerLink]="['/login']">Please login to review</button>
   </div>
         
 </div>

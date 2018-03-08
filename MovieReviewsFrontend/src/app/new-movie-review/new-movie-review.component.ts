@@ -4,6 +4,7 @@ import { CustomApiService } from '../../services/custom-api.service';
 import { Movie } from '../../models/movie';
 import { MovieReview } from '../../models/movie-review';
 import { HttpModule } from '@angular/http';
+import { AuthService } from 'angular4-social-login';
 
 @Component({
   selector: 'app-new-movie-review',
@@ -26,14 +27,20 @@ export class NewMovieReviewComponent implements OnInit {
   errorMessage: string;
   movieName: string;
 
+  // Movie Vars
   selMovieTitle: string;
   selMovieID: string;
   selMoviePrice: string;
   starCount: number = 4;
 
+  // User Vars
+  user: any;
+  loggedIn: boolean;
+
   constructor(
     private _movieService: MovieService, 
-    private _customApiService: CustomApiService) {
+    private _customApiService: CustomApiService,
+    private authService: AuthService) {
       this.findMovieStart("brooklyn");
      }
 
@@ -108,6 +115,11 @@ export class NewMovieReviewComponent implements OnInit {
       console.log("No movie!");
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void { 
+    this.authService.authState.subscribe((user) => {
+      this.user = user;
+      this.loggedIn = (user != null); // Checks if logged in
+    });
+  }
 
 }
