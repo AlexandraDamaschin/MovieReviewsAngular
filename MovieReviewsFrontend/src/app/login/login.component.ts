@@ -1,3 +1,4 @@
+import { Credentials } from 'crypto';
 import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { AuthService } from "angular4-social-login";
 import { FacebookLoginProvider, GoogleLoginProvider } from "angular4-social-login";
@@ -7,6 +8,8 @@ import { Router } from '@angular/router';
 
 import { UserRegistration } from '../../services/user.registration';
 import { UserServiceService } from '../../services/user.registration.service';
+
+import { Credential } from '../shared/credential';
 
 // import { validate } from 'codelyzer/walkerFactory/walkerFn';
 
@@ -23,6 +26,12 @@ export class LoginComponent implements OnInit {
 
   loginShow: boolean = true;
 
+
+  credentials: Credential = { email: '', password: '' };
+
+  
+
+
   constructor( private authService: AuthService, 
     public toastr: ToastsManager, 
     vcr: ViewContainerRef,
@@ -36,11 +45,27 @@ export class LoginComponent implements OnInit {
   }
 
   // Login ***
+  /*
   login(username, password) {
     console.log("username --> " + username + " . password --> " + password);
     return false; // Remove this for successful submit, this is here for dev only.
+  }*/
+  login({ value, valid }: { value: Credential, valid: boolean }) {
+    this.submitted = true;
+    this.isRequesting = true;
+    this.errors='';
+    if (valid) {
+      this.userService.login(value.email, value.password)
+        .finally(() => this.isRequesting = false)
+        .subscribe(
+        result => {         
+          if (result) {
+             this.router.navigate(['profile']);             
+          }
+        },
+        error => this.errors = error);
   }
-
+}
   //google login
   signInWithGoogle(): void {
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
