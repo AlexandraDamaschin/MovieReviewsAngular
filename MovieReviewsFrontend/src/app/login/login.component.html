@@ -38,17 +38,21 @@
   </form>
 
   <div class="row socialDiv" *ngIf="loginShow">
-    <div class="col-sm-3">
+    <div class="col-sm-2"></div>
+
+    <div class="col-sm-4">
       <div class="btnSocial" (click)="signInWithGoogle()">
         <i class="fa fa-google"></i>
       </div>
     </div>
-    <div class="col-sm-3">
+    <div class="col-sm-4">
       <div class="btnSocial" (click)="signInWithFB()">
         <i class="fa fa-facebook-square"></i>
       </div>
     </div>
-    <div class="col-sm-3">
+
+    <div class="col-sm-2"></div>
+    <!-- <div class="col-sm-3">
       <div class="btnSocial" (click)="socialLogin('github')">
         <i class="fa fa-github"></i>
       </div>
@@ -57,7 +61,7 @@
       <div class="btnSocial" (click)="socialLogin('twitter')">
         <i class="fa fa-twitter"></i>
       </div>
-    </div>
+    </div> -->
   </div>
 
   <br>
