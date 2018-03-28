@@ -35,6 +35,7 @@ export class LoginComponent implements OnInit {
     document.getElementsByTagName("body")[0].style.overflow = "auto";
   }
 
+  // Login ***
   login(username, password) {
     console.log("username --> " + username + " . password --> " + password);
     return false; // Remove this for successful submit, this is here for dev only.
@@ -66,6 +67,7 @@ export class LoginComponent implements OnInit {
     this.loginShow = false;
   }
 
+  // Register ***
   register(fn, ln, un, em, p1, p2){
     if(p1 != p2) {
       alert("Passwords must match!");
@@ -93,6 +95,7 @@ export class LoginComponent implements OnInit {
       console.log("Register --> " + fn + " " + ln + " " + un + " " + em + " " + p1 + " " + p2 + " ");
     }
   }
+
 
   formSubmit() {
     console.log("formSubmit");

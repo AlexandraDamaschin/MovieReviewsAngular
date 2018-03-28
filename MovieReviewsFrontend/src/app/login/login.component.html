@@ -28,11 +28,12 @@
     
     <!-- Password 2 -->
     <div class="form-group" [hidden]="loginShow">
-      <input #password2 type="password" class="form-control" ng-model="password2" placeholder="Confirm Password" required />
+      <input #password2 type="password" class="form-control" ng-model="password2" placeholder="Confirm Password"  />
     </div>
 
-    <div class="form-group" *ngIf="loginShow">
-      <button type="submit" class="btn btn-success btn-block">Login</button>
+    <div class="form-group" *ngIf="loginShow" [hidden]="!loginShow">
+      <!-- <button type="submit" class="btn btn-success btn-block">Login</button> -->
+      <button class="btn btn-success btn-block" (click)="login(email.value, password1.value)">Login</button>
     </div>
   </form>
 
