@@ -74,10 +74,10 @@
   <div class="row" *ngIf="!loginShow">
     <button class="btn btn-block btn-link" (click)="backToLogin()">Back to Login</button>
   </div>
-  <div class="row" *ngIf="loginShow">
+  <!-- <div class="row" *ngIf="loginShow">
     <button class="btn btn-block btn-link" (click)="forgotPassword()">Forgot Password?</button>
-  </div>
-  <div class="row" *ngIf="loginShow">
+  </div> -->
+  <div class="row" [hidden]="loginShow">
     <button class="btn btn-block btn-link" (click)="signOut()">Logout</button>
   </div>
 

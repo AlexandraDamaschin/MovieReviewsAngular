@@ -19,7 +19,7 @@ form {
     top: 15%;
     left: 15%;
     right: 15%;
-    height: 350px;
+    /* height: 350px; */
     background-color: white;
 }
 
@@ -30,6 +30,8 @@ form {
     text-align: bottom left;
     cursor: pointer;
     transition: .1s;
+    /* max-width: 150px;  */
+    margin: 0 auto;
 }
 
 .submitReviewBtn:hover {
@@ -185,8 +187,50 @@ ul {
 }
 
 
-img {
+/* img {
     max-height: 400px;
+} */
+
+.movieInfoBox {
+    padding: 50px;
+    padding-top: 30px;
 }
 
+.searchRow {
+    padding: 15px;
+}
 
+.reviewRow {
+    padding: 12px;
+    padding-top: 0px;
+}
+
+/*** Small Screen ***/
+@media only screen and (max-width:992px){
+    .movieInfoBox{
+        display: none;
+        padding: 0px;
+    }
+
+    .sayingAbout {
+        font-size: 25px;
+    }
+
+    .movieOutput {
+        max-width: 333px;
+        max-height: 444px;
+        margin: 0 auto;
+    }
+
+    .moviePoster {
+        height: 444px;
+        width: 333px;
+        margin: 0 auto;
+    }
+
+    #popup {
+        top: 15%;
+        left: 5%;
+        right: 5%;
+    }
+}
