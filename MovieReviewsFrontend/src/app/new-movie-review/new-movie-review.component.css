@@ -2,6 +2,10 @@ form {
     max-width: 900px;
 }
 
+.btn {
+    cursor: pointer;
+}
+
 #darkBackground {
     position: fixed;
     top: 0px;
