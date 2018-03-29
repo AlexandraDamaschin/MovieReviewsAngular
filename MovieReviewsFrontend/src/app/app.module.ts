@@ -22,11 +22,12 @@ import { SocialLoginModule, AuthServiceConfig } from "angular4-social-login";
 import { GoogleLoginProvider, FacebookLoginProvider } from "angular4-social-login";
 
 // Toaster Notifications
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {ToastModule} from 'ng2-toastr/ng2-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastModule } from 'ng2-toastr/ng2-toastr';
 import { ReviewCommentLineComponent } from './review-comment-line/review-comment-line.component';
 import { UserServiceService } from '../services/user.registration.service';
 import { ConfigService } from '../services/config.service';
+
 
 
 const routes: Routes = [

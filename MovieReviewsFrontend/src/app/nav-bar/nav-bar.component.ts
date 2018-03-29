@@ -7,7 +7,6 @@ import { ToastsManager } from 'ng2-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
-
 @Component({
   selector: 'app-nav-bar',
   templateUrl: './nav-bar.component.html',
