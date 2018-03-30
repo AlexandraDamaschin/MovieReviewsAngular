@@ -71,7 +71,7 @@ export class NewMovieReviewComponent implements OnInit {
     self._customApiService.getReviews(movId)
     .subscribe(response => this.filmReviews = response, error => this.errorMessage = <any>error);
 
-    console.log("***** Method finished. movId: " + movId);
+    console.log("callCustomAPI() ***** Method finished. movId: " + movId);
 
     this.filmReviewBool = true;
   }

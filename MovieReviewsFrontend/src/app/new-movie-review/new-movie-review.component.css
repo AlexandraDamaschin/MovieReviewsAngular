@@ -13,6 +13,7 @@ form {
     background-color: rgba(0,0,0,.7);
     width: 100%;
     height: 100%;   
+    z-index: 100;
 }
 
 #popup {
@@ -21,6 +22,7 @@ form {
     left: 15%;
     right: 15%;
     background-color: white;
+    z-index: 200;
 }
 
 .submitReviewBtn {
