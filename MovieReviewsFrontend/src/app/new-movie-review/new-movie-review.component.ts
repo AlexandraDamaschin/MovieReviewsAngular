@@ -58,14 +58,14 @@ export class NewMovieReviewComponent implements OnInit {
   showReviewedMovies(){
     let self = this;
 
-    self._customApiService.getReviews('')
+    self._customApiService.getReviews('').distinct((x) => x.app)
     .subscribe(response => this.filmReviewsAll = response, error => this.errorMessage = <any>error);
     
 
     //this.filmReviewsAll = Set(data.map(elt => elt.metadata.currency).filter(Boolean));
 
    //this.filmReviewsAll= Array.from(this.filmReviewsAll) => itemInArray.app)))
-   myTestArray<MovieReview> = Array.from(new Set(this.filmReviewsAll));
+   //myTestArray<MovieReview> = Array.from(new Set(this.filmReviewsAll));
 
     console.log("***** Method finished. movId: " + "ALL");
 
