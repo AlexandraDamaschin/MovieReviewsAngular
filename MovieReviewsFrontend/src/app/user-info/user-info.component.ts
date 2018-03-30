@@ -16,19 +16,21 @@ export class UserInfoComponent implements OnInit {
   public user: SocialUser;
   public loggedIn: boolean;
 
-
   constructor(private authService: AuthService, private router: Router, public toastr: ToastsManager, vcr: ViewContainerRef) {
     this.toastr.setRootViewContainerRef(vcr);
    }
 
-   logout(){
+  // Logout
+  logout(){
     this.authService.signOut();
     this.router.navigate(['login']);
-    // Doest get displayed
+
+    // Doesn't get displayed
     // this.toastr.success('Logged out', null, {toastLife: 2000});
-   }
+  }
 
   ngOnInit() {
+    // Checks if user logged in
     this.authService.authState.subscribe((user) => {
       this.user = user;
       this.loggedIn = (user != null);

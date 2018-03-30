@@ -14,13 +14,19 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 })
 export class NavBarComponent implements OnInit {
 
+  // Variables
   public user: SocialUser;
   public loggedIn: boolean;
 
-  constructor(private authService: AuthService, private router: Router, public toastr: ToastsManager, vcr: ViewContainerRef) { 
-    this.toastr.setRootViewContainerRef(vcr);
+  constructor(
+    private authService: AuthService, 
+    private router: Router, 
+    public toastr: ToastsManager, 
+    vcr: ViewContainerRef) { 
+      this.toastr.setRootViewContainerRef(vcr);
   }
 
+  // Login / Logout
   loginLogout(){
     if(this.loggedIn) { // If logged in, signOut and go home
       this.authService.signOut();
@@ -28,7 +34,6 @@ export class NavBarComponent implements OnInit {
       this.router.navigate(['']);
     } 
     else { // If not logged in, go to login page
-      // this.toastr.info('You are logged out', null, {toastLife: 2000});
       this.router.navigate(['login']);
     }
   }
@@ -40,9 +45,6 @@ export class NavBarComponent implements OnInit {
 
       if(this.loggedIn)
         this.router.navigate(['']);
-
     });
   }
-
-
 }

@@ -22,25 +22,26 @@ export class CustomApiService {
 
     constructor(private http: Http) { }
 
+    // Creates a new review through our Custom API
     createReview(review: MovieReview) {
         return this.http.post(this.putUrl, review);
-      }
+    }
 
+    // Gets reviews from our Custom API. 
     getReviews(movId): Observable<MovieReview> {
-        if(movId == ''){
+        if(movId == ''){ // If no id provided, get all reviews.
             return this.http.get(this.urlBaseALL).map((response: Response) => {
                 return <MovieReview>response.json();
             }).catch(this.handleError);
         }
-        else {
+        else { // Otherwise show reviews for that specific ImdbID
             return this.http.get(this.urlBaseID + movId).map((response: Response) => {
                 return <MovieReview>response.json();
             }).catch(this.handleError);
         }
-
     }
 
-
+    // Handles errors
     private handleError(errorResponse: Response) {
         console.log(errorResponse.statusText);
         return Observable.throw(errorResponse.json().error || "Server error");

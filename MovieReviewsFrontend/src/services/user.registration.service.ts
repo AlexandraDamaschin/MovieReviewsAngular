@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 
-
 import { Observable } from 'rxjs/Rx';
 import { BehaviorSubject } from 'rxjs/Rx';
 import { ConfigService } from '../services/config.service';
@@ -25,13 +24,14 @@ export class UserServiceService extends BaseService {
   constructor(
     private http: Http,
     private configService: ConfigService) {
-    super();
-    this.loggedIn = !!localStorage.getItem('auth_token');
+      super();
+      this.loggedIn = !!localStorage.getItem('auth_token');
 
-    this._authNavStatusSource.next(this.loggedIn);
-    this.baseUrl = configService.getApiURI();
+      this._authNavStatusSource.next(this.loggedIn);
+      this.baseUrl = configService.getApiURI();
   }
 
+  
   register(email: string, password: string, ConfirmPassword: string, UserName: string): Observable<UserRegistration> {
     let body = JSON.stringify({ email, password, ConfirmPassword, UserName });
     let headers = new Headers({ 'Content-Type': 'application/json' });

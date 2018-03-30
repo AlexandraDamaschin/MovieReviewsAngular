@@ -12,22 +12,24 @@ export class MovieService {
     private urlID: string = StringList.OMDB_API_BASE;    
 
     constructor(private http: Http) {}  
-       
-    getMovies(x): Observable < Movie > {  
-        return this.http.get(this.urlBase + x).map((response: Response) => {  
+    
+    // Searches OMDB API for movie based on name
+    getMovies(movieName): Observable < Movie > {  
+        return this.http.get(this.urlBase + movieName).map((response: Response) => {  
             return <Movie > response.json()  
         }).catch(this.handleError);  
     }  
 
-    getMovieID(id): Observable < Movie > {  
-        return this.http.get(this.urlID + id).map((response: Response) => {  
+    // Searches OMDB API for movie based on ImdbID
+    getMovieID(movID): Observable < Movie > {  
+        return this.http.get(this.urlID + movID).map((response: Response) => {  
             return <Movie > response.json()  
         }).catch(this.handleError);  
     }  
     
+    // Handles Errors
     private handleError(errorResponse: Response) {  
         console.log(errorResponse.statusText);  
         return Observable.throw(errorResponse.json().error || "Server error");  
     } 
-
 }

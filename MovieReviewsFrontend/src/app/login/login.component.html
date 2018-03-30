@@ -1,84 +1,84 @@
+<!-- Outer Wrap - BEGIN -->
 <div id="wrap">
+
+  <!-- Form - BEGIN -->
   <form ng-submit="formSubmit()" class="form">
 
-    <!-- First Name -->
-    <div class="form-group" [hidden]="loginShow">
+    <div class="form-group" [hidden]="loginShow"> <!-- First Name -->
       <input #firstName type="text" class="form-control" ng-model="firstname" placeholder="First Name" />
     </div>
-
-    <!-- Last Name -->
-    <div class="form-group" [hidden]="loginShow">
+    
+    <div class="form-group" [hidden]="loginShow"> <!-- Last Name -->
       <input #lastName type="text" class="form-control" ng-model="lastname" placeholder="Last Name" />
     </div>
-
-    <!-- Username -->
-    <div class="form-group" [hidden]="loginShow">
+    
+    <div class="form-group" [hidden]="loginShow"> <!-- Username -->
       <input #userName type="text" class="form-control" ng-model="username" placeholder="Username" />
     </div>
-
-    <!-- Email -->
-    <div class="form-group">
+    
+    <div class="form-group"> <!-- Email -->
       <input #email type="email" class="form-control" ng-model="email" placeholder="E-mail" required />
     </div>
-
-    <!-- Password 1 -->
-    <div class="form-group">
+    
+    <div class="form-group"> <!-- Password 1 -->
       <input #password1 type="password" class="form-control" ng-model="password" placeholder="Password" required />
     </div>
     
-    <!-- Password 2 -->
-    <div class="form-group" [hidden]="loginShow">
+    <div class="form-group" [hidden]="loginShow"> <!-- Password 2 -->
       <input #password2 type="password" class="form-control" ng-model="password2" placeholder="Confirm Password"  />
     </div>
-
+    
+     <!-- Login Button -->
     <div class="form-group" *ngIf="loginShow" [hidden]="!loginShow">
-      <!-- <button type="submit" class="btn btn-success btn-block">Login</button> -->
       <button class="btn btn-success btn-block" (click)="login(email.value, password1.value)">Login</button>
     </div>
-  </form>
 
+  </form>
+  <!-- Form - END -->
+
+
+
+
+  <!-- Social Media Icons Row - BEGIN -->
   <div class="row socialDiv" *ngIf="loginShow">
-    <div class="col-sm-2"></div>
+    <div class="col-sm-2"></div> <!-- Empty Box -->
 
     <div class="col-sm-4">
-      <div class="btnSocial" (click)="signInWithGoogle()">
+      <div class="btnSocial" (click)="signInWithGoogle()"> <!-- Google sign in btn -->
         <i class="fa fa-google"></i>
       </div>
     </div>
+
     <div class="col-sm-4">
-      <div class="btnSocial" (click)="signInWithFB()">
+      <div class="btnSocial" (click)="signInWithFB()"> <!-- Facebook sign in btn -->
         <i class="fa fa-facebook-square"></i>
       </div>
     </div>
 
-    <div class="col-sm-2"></div>
-    <!-- <div class="col-sm-3">
-      <div class="btnSocial" (click)="socialLogin('github')">
-        <i class="fa fa-github"></i>
-      </div>
-    </div>
-    <div class="col-sm-3">
-      <div class="btnSocial" (click)="socialLogin('twitter')">
-        <i class="fa fa-twitter"></i>
-      </div>
-    </div> -->
+    <div class="col-sm-2"></div> <!-- Empty Box -->
   </div>
+  <!-- Social Media Icons Row - END -->
+
+
 
   <br>
 
+
+
+  <!-- Register / Open registration form buttons - BEGIN -->
   <div class="row">
-      <!-- firstName.value, lastName.value, userName.value, email.value, password1.value, password2.value -->
     <button *ngIf="loginShow" class="btn btn-block btn-{{loginShow ? 'default' : 'success'}}" (click)="registerShow()">Register</button>
     <button *ngIf="!loginShow" class="btn btn-block btn-{{loginShow ? 'default' : 'success'}}" (click)="register(firstName.value, lastName.value, userName.value, email.value, password1.value, password2.value)">Register</button>
   </div>
-  <div class="row" *ngIf="!loginShow">
+
+  <div class="row" *ngIf="!loginShow"> <!-- Back to Login -->
     <button class="btn btn-block btn-link" (click)="backToLogin()">Back to Login</button>
   </div>
-  <!-- <div class="row" *ngIf="loginShow">
-    <button class="btn btn-block btn-link" (click)="forgotPassword()">Forgot Password?</button>
-  </div> -->
-  <div class="row" [hidden]="loginShow">
+
+  <div class="row" [hidden]="loginShow"> <!-- Logout -->
     <button class="btn btn-block btn-link" (click)="signOut()">Logout</button>
   </div>
+  <!-- Register / Open registration form buttons - END -->
 
 </div>
+<!-- Outer Wrap - END -->

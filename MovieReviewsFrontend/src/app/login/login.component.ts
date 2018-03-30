@@ -17,10 +17,10 @@ import { UserServiceService } from '../../services/user.registration.service';
 })
 export class LoginComponent implements OnInit {
 
+  // Variables
   errors: string;
   isRequesting: boolean;
   submitted: boolean = false;
-
   loginShow: boolean = true;
 
   constructor( private authService: AuthService, 
@@ -62,12 +62,18 @@ export class LoginComponent implements OnInit {
     console.log("Forgot Password");
   }
 
-
+  // Shows Registration form
   registerShow() {
     this.loginShow = false;
   }
 
+  // Switches back to Login form
+  backToLogin() {
+    this.loginShow = true;
+  }
+
   // Register ***
+  // (FirstName, LastName, UserName, Email, Pass1, Pass2)
   register(fn, ln, un, em, p1, p2){
     if(p1 != p2) {
       alert("Passwords must match!");
@@ -91,21 +97,19 @@ export class LoginComponent implements OnInit {
           },
           errors => this.errors = errors);
     
-
       console.log("Register --> " + fn + " " + ln + " " + un + " " + em + " " + p1 + " " + p2 + " ");
     }
   }
 
-
+  // Not necessary
   formSubmit() {
     console.log("formSubmit");
   }
 
-  testLogin(){
-    console.log("testlogin");
-  }
+
 
   // Keiths Register function
+
   // registerUser({ value, valid }: { value: UserRegistration, valid: boolean }) {
   //   this.submitted = true;
   //   this.isRequesting = true;
@@ -128,13 +132,6 @@ export class LoginComponent implements OnInit {
   //         errors => this.errors = errors);
   //   }
   // }
-
-
-  backToLogin() {
-    this.loginShow = true;
-  }
-
-
 }
 
 

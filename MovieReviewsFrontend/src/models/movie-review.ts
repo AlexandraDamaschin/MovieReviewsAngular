@@ -15,13 +15,12 @@ export class MovieReview {
         dateCreated: DateTimeFormat,
         starRating: number,
         imageUrl: string) {
-
-        this.reviewId = reviewId;
-        this.userID = userID;
-        this.imdbId = imdbId;
-        this.reviewComment = reviewComment;
-        this.dateCreated = dateCreated;
-        this.starRating = starRating;
-        this.imageUrl = imageUrl;
+            this.reviewId = reviewId;
+            this.userID = userID;
+            this.imdbId = imdbId;
+            this.reviewComment = reviewComment;
+            this.dateCreated = dateCreated;
+            this.starRating = starRating;
+            this.imageUrl = imageUrl;
     }
 }

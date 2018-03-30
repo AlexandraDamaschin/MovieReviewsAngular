@@ -14,11 +14,15 @@ export class HomeComponent implements OnInit {
   // private loggedIn: boolean;
   // private show: boolean = true;
 
-  constructor(private authService: AuthService, public toastr: ToastsManager, vcr: ViewContainerRef) { 
-    // this.toastr.setRootViewContainerRef(vcr);
-
+  constructor(
+    private authService: AuthService, 
+    public toastr: ToastsManager, 
+    vcr: ViewContainerRef) { 
+      // this.toastr.setRootViewContainerRef(vcr);
   }
 
+  
+  // *** Failed attempts with Toaster notifications - Half worked ***
 
   ngOnInit() {
     // this.authService.authState.subscribe((user) => {
