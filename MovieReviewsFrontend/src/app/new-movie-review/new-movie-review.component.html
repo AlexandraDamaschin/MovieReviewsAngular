@@ -31,15 +31,15 @@
 </div>
 
 <hr>
-
+<br>
 <!-- Reviewed Movies -->
 <h2 class="text-center">Already Reviewed Movies</h2>
 <!-- <button (click)="showReviewedMovies()">Show Movies With Reviews</button> -->
 <div *ngIf="filmReviewBool" style="max-width: 800px; margin: 0 auto;"> 
   <!-- <ul> -->
     <div class="row">
-        <div style="padding: 25px;" class="revMovList col-sm-4" (click)="movieSelected('TEST', testVal.innerHTML)" *ngFor="let rev of filmReviewsAll">
-          <img width="100%" [src]=[rev.imageUrl]/><span style="display: none;" #testVal>{{rev.imdbId}}</span>
+        <div style="padding: 25px;" class="revMovList col-sm-4" (click)="movieSelected('TEST', uniqueId.innerHTML)" *ngFor="let rev of filmReviewsAll">
+          <img width="100%" [src]=[rev.imageUrl]/><span style="display: none;" #uniqueId>{{rev.imdbId}}</span><span></span>
         </div>
     </div>
     
