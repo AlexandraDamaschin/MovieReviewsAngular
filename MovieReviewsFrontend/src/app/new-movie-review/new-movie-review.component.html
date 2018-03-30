@@ -39,7 +39,7 @@
   <!-- <ul> -->
     <div class="row">
         <div style="padding: 25px;" class="revMovList col-sm-4" (click)="movieSelected('TEST', uniqueId.innerHTML)" *ngFor="let rev of filmReviewsAll">
-          <img width="100%" [src]=[rev.imageUrl]/><span style="display: none;" #uniqueId>{{rev.imdbId}}</span><span></span>
+          <img class="revImage" [src]=[rev.imageUrl]/><span style="display: none;" #uniqueId>{{rev.imdbId}}</span><span></span>
         </div>
     </div>
     
