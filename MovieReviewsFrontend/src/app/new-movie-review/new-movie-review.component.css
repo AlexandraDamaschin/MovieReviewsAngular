@@ -77,11 +77,13 @@ ul {
 }
 
 .checked {
-    color: rgb(247, 231, 16);
+    /* color: rgb(247, 231, 16); */
+    /* color: rgb(18, 99, 250); */
+    color: rgb(54, 54, 54);
 }
 
 #prevComments {
-    height: 165px;
+    height: 200px;
     text-align: center;
     overflow: auto;
 }
@@ -255,5 +257,12 @@ ul {
         top: 15%;
         left: 5%;
         right: 5%;
+    }
+
+}
+
+@media only screen and (max-width:500px){
+    .hideOnSmallScreen {
+        display: none;
     }
 }

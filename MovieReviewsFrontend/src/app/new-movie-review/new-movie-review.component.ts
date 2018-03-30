@@ -22,6 +22,7 @@ export class NewMovieReviewComponent implements OnInit {
   public validMovie: boolean = false;
   public popupShow: boolean = false;
   resultUser: boolean = false;
+  public disableComments: boolean = false;
 
   // Film / Review Vars
   film: Movie;
@@ -36,6 +37,8 @@ export class NewMovieReviewComponent implements OnInit {
   selMoviePrice: string;
   starCount: number = 4;
   movieName: string;
+
+  public tempMovPoster: string;
 
   // User Vars
   user: any;
@@ -106,7 +109,13 @@ export class NewMovieReviewComponent implements OnInit {
   }
 
   // When movie is clicked on
-  movieSelected(title, id) {
+  movieSelected(title, id, img) {
+    if(title == 'DISABLE_COMMENTS')
+      this.disableComments = true;
+    else
+      this.disableComments = false;
+
+    this.tempMovPoster = img;
     this.selMovieTitle = title;
     this.selMovieID = id;
     this.popupShow = true;
