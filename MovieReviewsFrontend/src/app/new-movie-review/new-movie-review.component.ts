@@ -58,7 +58,7 @@ export class NewMovieReviewComponent implements OnInit {
   showReviewedMovies(){
     let self = this;
 
-    self._customApiService.getReviews('').distinct((x) => x.app)
+    self._customApiService.getReviews('').distinct((x) => x.ImdbId)
     .subscribe(response => this.filmReviewsAll = response, error => this.errorMessage = <any>error);
     
 
