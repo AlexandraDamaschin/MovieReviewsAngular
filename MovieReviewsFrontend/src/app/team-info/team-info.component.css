@@ -4,7 +4,8 @@
     color: gray;
     padding-left: 15px;
     padding-right: 15px;
-    z-index: auto;
+    position:relative;
+    z-index: inherit;
 }
 
 #about {
