@@ -20,7 +20,8 @@
 }
 
 nav {
-    background-color: #efefef !important;
+    /* background-color: #efefef !important; */
+    background-color: rgb(77, 139, 255);
 }
 
 i {
