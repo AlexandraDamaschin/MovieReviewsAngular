@@ -84,7 +84,6 @@ export class NewMovieReviewComponent implements OnInit {
       return false;
 
     //TODO: UserID, ReviewID??, Refresh New Comment
-    this.newFilmReview = new MovieReview(10, 10, this.film.imdbID, comment, null, this.starCount, img);
     this.newFilmReview = new MovieReview(this.getRandomInt(1,99999), this.getRandomInt(1,99999), this.film.imdbID, comment, null, this.starCount, img);
 
     this._customApiService.createReview(this.newFilmReview)
