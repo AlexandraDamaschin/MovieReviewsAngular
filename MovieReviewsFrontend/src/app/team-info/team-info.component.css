@@ -4,6 +4,7 @@
     color: gray;
     padding-left: 15px;
     padding-right: 15px;
+    z-index: auto;
 }
 
 #about {
@@ -11,3 +12,4 @@
     /* font-family: 'Walter Turncoat', cursive; */
     font-size: 18px;
 }
+
