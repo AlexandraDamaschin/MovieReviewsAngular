@@ -76,6 +76,7 @@ export class NewMovieReviewComponent implements OnInit {
     this.filmReviewBool = true;
   }
 
+  
 
   // Submits new review for selected movie
   submitReview(comment, img) {
@@ -84,6 +85,7 @@ export class NewMovieReviewComponent implements OnInit {
 
     //TODO: UserID, ReviewID??, Refresh New Comment
     this.newFilmReview = new MovieReview(10, 10, this.film.imdbID, comment, null, this.starCount, img);
+    this.newFilmReview = new MovieReview(this.getRandomInt(1,99999), this.getRandomInt(1,99999), this.film.imdbID, comment, null, this.starCount, img);
 
     this._customApiService.createReview(this.newFilmReview)
     .subscribe(
@@ -121,6 +123,11 @@ export class NewMovieReviewComponent implements OnInit {
   closePopup() {
     this.popupShow = false;
     document.getElementsByTagName("body")[0].style.overflow = "auto";
+  }
+
+  //get a random number for the review placeholder.
+  getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
   // Begin searching for movie (in OMDB, by Name)
