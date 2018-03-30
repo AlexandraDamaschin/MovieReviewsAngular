@@ -27,6 +27,7 @@ import { FacebookModule } from 'ngx-facebook';
 // Toaster Notifications
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastModule } from 'ng2-toastr/ng2-toastr';
+import { TeamInfoComponent } from './team-info/team-info.component';
 
 
 const routes: Routes = [
@@ -59,7 +60,8 @@ let config = new AuthServiceConfig([
     HomeComponent,
     LoginComponent,
     UserInfoComponent,
-    ReviewCommentLineComponent
+    ReviewCommentLineComponent,
+    TeamInfoComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,13 @@
+.namesWrap {
+    max-width: 400px;
+    margin: 0 auto;
+    color: gray;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+#about {
+    /* <link href="https://fonts.googleapis.com/css?family=Annie+Use+Your+Telescope|Handlee|Parisienne|Petit+Formal+Script|Walter+Turncoat" rel="stylesheet"></head> */
+    /* font-family: 'Walter Turncoat', cursive; */
+    font-size: 18px;
+}
