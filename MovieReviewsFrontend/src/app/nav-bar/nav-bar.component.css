@@ -21,11 +21,18 @@
 
 nav {
     /* background-color: #efefef !important; */
-    background-color: rgb(77, 139, 255);
+    background-color: rgb(46, 46, 46) !important;
+    color: rgb(233, 233, 233) !important;
+    border-radius: 0px !important;
+}
+
+nav a {
+    color: rgb(233, 233, 233) !important;
 }
 
 i {
     font-size:22px;
+    color: rgb(233, 233, 233) !important;
 }
 
 /* Logo size */

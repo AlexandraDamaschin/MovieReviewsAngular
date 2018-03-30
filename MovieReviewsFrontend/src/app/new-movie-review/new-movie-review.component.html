@@ -51,7 +51,7 @@
 <div *ngIf="filmReviewBool" class="revMovieContainer"> 
     <div class="row">
         <div style="padding: 25px;" class="revMovList col-sm-4" *ngFor="let rev of filmReviewsAll">
-          <img class="revImage" [src]=[rev.imageUrl] (click)="movieSelected('DISABLE_COMMENTS', uniqueId.innerHTML, rev.imageUrl)"/><span style="display: none;" #uniqueId>{{rev.imdbId}}</span>
+          <img height="100%" class="revImage" [src]=[rev.imageUrl] (click)="movieSelected('DISABLE_COMMENTS', uniqueId.innerHTML, rev.imageUrl)"/><span style="display: none;" #uniqueId>{{rev.imdbId}}</span>
         </div>
     </div>
 </div>
@@ -67,10 +67,10 @@
 <!-- The popup itself (with comments) -->
 <div id="popup" *ngIf="popupShow">
   <div class="row">
-    <div class="col-sm-4 hideOnSmallScreen">
+    <div class="col-sm-3 hideOnSmallScreen">
       <img height="300px" [src]=[tempMovPoster] alt="">
     </div>
-    <div class="col-sm-8">
+    <div class="col-sm-9">
         <h1 id="closePopupX" (click)="closePopup()">X</h1>
 
         <!-- <h3 class="text-center sayingAbout">{{film.Title}}'s Reviews</h3> -->

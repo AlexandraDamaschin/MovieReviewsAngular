@@ -13,11 +13,11 @@
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active"> <!-- Home Button -->
           <a class="nav-link" [routerLink]="['home']">
-            <i class="fa fa-home fa-2x"></i>Home</a> 
+            <i class="fa fa-home fa-2x"></i> Home</a> 
         </li>
         <li class="nav-item active" *ngIf="loggedIn"> <!-- My Profile Button -->
           <a class="nav-link" [routerLink]="['profile']">
-            <i class="fa fa-user fa-2x"></i>My Profile</a>
+            <i class="fa fa-user fa-2x"></i> My Profile</a>
         </li>
         <li class="nav-item active"> <!-- Dynamic Login/out Button -->
           <a style="cursor: pointer;" class="nav-link" (click)="loginLogout()">
