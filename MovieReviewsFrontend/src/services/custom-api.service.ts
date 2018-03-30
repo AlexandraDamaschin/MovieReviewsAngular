@@ -9,8 +9,9 @@ import { StringList } from './strings';
 @Injectable()
 export class CustomApiService {  
 
-    private urlBase: string = StringList.CUSTOM_API_BASE;
-    private putUrl: string = 'http://localhost:63548/api/reviews/';
+    private urlBaseID: string = StringList.CUSTOM_API_BASE_ID;
+    private urlBaseALL: string = StringList.CUSTOM_API_BASE_ALL;
+    private putUrl: string = StringList.CUSTOM_API_BASE_POST;
 
     private headers = new Headers({ 'Content-Type': 'application/json' });
 
@@ -21,9 +22,17 @@ export class CustomApiService {
       }
 
     getReviews(movId): Observable<MovieReview> {
-        return this.http.get(this.urlBase + movId).map((response: Response) => {
-            return <MovieReview>response.json();
-        }).catch(this.handleError);
+        if(movId != ''){
+            return this.http.get(this.urlBaseALL).map((response: Response) => {
+                return <MovieReview>response.json();
+            }).catch(this.handleError);
+        }
+        else {
+            return this.http.get(this.urlBaseID + movId).map((response: Response) => {
+                return <MovieReview>response.json();
+            }).catch(this.handleError);
+        }
+
     }
 
 

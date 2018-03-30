@@ -45,6 +45,13 @@ export class NewMovieReviewComponent implements OnInit {
       this.findMovieStart("brooklyn");
      }
 
+    showAllMovies(){
+      let self = this; // getReviews(movId) *****
+      self._customApiService.getReviews('')
+        .subscribe(response => this.filmReviews = response, error => this.errorMessage = <any>error);
+      console.log("***** Method finished. movId: ");
+      this.filmReviewBool = true;
+    }
 
   callCustomAPI(movId) {
     let self = this; // getReviews(movId) *****

@@ -28,7 +28,7 @@ import { ReviewCommentLineComponent } from './review-comment-line/review-comment
 import { UserServiceService } from '../services/user.registration.service';
 import { ConfigService } from '../services/config.service';
 
-
+// import { Ng2BootstrapModule } from 'ng-bootstrap/ng2-bootstrap.js';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },

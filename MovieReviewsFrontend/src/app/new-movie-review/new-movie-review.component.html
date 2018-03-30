@@ -32,7 +32,7 @@
 <hr>
 
 <!-- Reviewed Movies -->
-<button (click)="callCustomAPI('')">Show Movies With Reviews</button>
+<button (click)="showAllMovies()">Show Movies With Reviews</button>
 <h3 *ngIf="filmReviewBool"> ==>
   <ul>
     <li style="cursor: pointer;" #testVal (click)="movieSelected('TEST', testVal.innerHTML)" *ngFor="let rev of filmReviews">{{rev.imdbId}}</li>
