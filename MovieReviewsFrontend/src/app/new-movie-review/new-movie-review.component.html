@@ -20,7 +20,7 @@
 
 
 <!--  Main movie at the top of the page - BEGIN -->
-<div *ngIf="searchBool && validMovie" class="movieOutput" (click)="movieSelected(filmTitle.innerHTML, filmID.innerHTML)">
+<div *ngIf="searchBool && validMovie" class="movieOutput" (click)="movieSelected(filmTitle.innerHTML, filmID.innerHTML, film.Poster)">
   <div class="row">
     <div class="col-md-4"><img class="img-responsive moviePoster" [src]=[film.Poster]/></div>
     <div class="col-md-8 movieInfoBox">
@@ -51,7 +51,7 @@
 <div *ngIf="filmReviewBool" class="revMovieContainer"> 
     <div class="row">
         <div style="padding: 25px;" class="revMovList col-sm-4" *ngFor="let rev of filmReviewsAll">
-          <img class="revImage" [src]=[rev.imageUrl]  (click)="movieSelected('TEST', uniqueId.innerHTML)"/><span style="display: none;" #uniqueId>{{rev.imdbId}}</span>
+          <img class="revImage" [src]=[rev.imageUrl] (click)="movieSelected('DISABLE_COMMENTS', uniqueId.innerHTML, rev.imageUrl)"/><span style="display: none;" #uniqueId>{{rev.imdbId}}</span>
         </div>
     </div>
 </div>
@@ -66,13 +66,25 @@
 
 <!-- The popup itself (with comments) -->
 <div id="popup" *ngIf="popupShow">
-  <h1 id="closePopupX" (click)="closePopup()">X</h1>
-  <h3 class="text-center sayingAbout">{{film.Title}}'s comments</h3>
-  <div id="prevComments">
-    <app-review-comment-line *ngFor="let rev of filmReviews" [review]="rev"></app-review-comment-line>
+  <div class="row">
+    <div class="col-sm-4 hideOnSmallScreen">
+      <img height="300px" [src]=[tempMovPoster] alt="">
+    </div>
+    <div class="col-sm-8">
+        <h1 id="closePopupX" (click)="closePopup()">X</h1>
+
+        <!-- <h3 class="text-center sayingAbout">{{film.Title}}'s Reviews</h3> -->
+      
+        <!-- <p>Poster: {{tempMovPoster}}</p> -->
+        <div id="prevComments">
+          <app-review-comment-line *ngFor="let rev of filmReviews" [review]="rev"></app-review-comment-line>
+        </div>
+    </div>
   </div>
-  <hr>
-  <div class="row reviewRow" *ngIf="loggedIn">
+    
+  
+  <hr style="margin-top: 0px;" [hidden]="disableComments">
+  <div class="row reviewRow" *ngIf="loggedIn" [hidden]="disableComments">
     <div class="col-md-7">
       <input #newReviewText type="text" class="form-control" placeholder="Write Review.."/>
     </div> 
@@ -87,12 +99,12 @@
       </div>
       </div>
     <div class="col-md-2">
-        <h6 style="display: none;" #posterSpan>{{film.Poster}}</h6> <!-- Invisible Poster URL passed into submitReview() -->
+      <h6 style="display: none;" #posterSpan>{{film.Poster}}</h6> <!-- Invisible Poster URL passed into submitReview() -->
       <button class="submitReviewBtn btn btn-block" (click)="submitReview(newReviewText.value, posterSpan.innerHTML)">Submit</button>  
     </div>
   </div>
   <!-- If not logged in, button to redirect to Login page -->
-  <div class="text-center" *ngIf="!loggedIn">
+  <div class="text-center" *ngIf="!loggedIn" [hidden]="disableComments">
     <button style="width: 300px; margin-bottom: 15px;" class="btn btn-success" [routerLink]="['/login']">Please login to review</button>
   </div>
 </div>
