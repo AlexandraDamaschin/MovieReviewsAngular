@@ -50,8 +50,8 @@
 
 <div *ngIf="filmReviewBool" class="revMovieContainer"> 
     <div class="row">
-        <div style="padding: 25px;" class="revMovList col-sm-4" (click)="movieSelected('TEST', uniqueId.innerHTML)" *ngFor="let rev of filmReviewsAll">
-          <img class="revImage" [src]=[rev.imageUrl]/><span style="display: none;" #uniqueId>{{rev.imdbId}}</span>
+        <div style="padding: 25px;" class="revMovList col-sm-4" *ngFor="let rev of filmReviewsAll">
+          <img class="revImage" [src]=[rev.imageUrl]  (click)="movieSelected('TEST', uniqueId.innerHTML)"/><span style="display: none;" #uniqueId>{{rev.imdbId}}</span>
         </div>
     </div>
 </div>

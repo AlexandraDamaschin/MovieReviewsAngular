@@ -201,13 +201,13 @@ ul {
 }
 
 .revMovList{
-    cursor: pointer;
     padding: 5px;
 }
 
 .revImage {
     width: 100%;
     transition: .1s;
+    cursor: pointer;
 }
 
 .revImage:hover {
