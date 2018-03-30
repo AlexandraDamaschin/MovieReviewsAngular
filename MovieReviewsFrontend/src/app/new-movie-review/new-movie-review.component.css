@@ -205,6 +205,11 @@ ul {
     padding-top: 0px;
 }
 
+.revMovList{
+    cursor: pointer;
+    padding: 5px;
+}
+
 /*** Small Screen ***/
 @media only screen and (max-width:992px){
     .movieInfoBox{

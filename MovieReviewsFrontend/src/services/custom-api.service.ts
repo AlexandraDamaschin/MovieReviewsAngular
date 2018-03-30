@@ -6,12 +6,17 @@ import { Headers, Http, Response } from '@angular/http';
 import { MovieReview } from '../models/movie-review';
 import { StringList } from './strings';
 
+import 'rxjs/add/operator/distinctUntilChanged';
+
 @Injectable()
 export class CustomApiService {  
 
     private urlBaseID: string = StringList.CUSTOM_API_BASE_ID;
     private urlBaseALL: string = StringList.CUSTOM_API_BASE_ALL;
     private putUrl: string = StringList.CUSTOM_API_BASE_POST;
+
+    private temp: Observable<MovieReview>;
+    private temp2: Observable<MovieReview>;
 
     private headers = new Headers({ 'Content-Type': 'application/json' });
 
@@ -22,7 +27,7 @@ export class CustomApiService {
       }
 
     getReviews(movId): Observable<MovieReview> {
-        if(movId != ''){
+        if(movId == ''){
             return this.http.get(this.urlBaseALL).map((response: Response) => {
                 return <MovieReview>response.json();
             }).catch(this.handleError);

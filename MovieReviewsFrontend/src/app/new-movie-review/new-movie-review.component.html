@@ -15,6 +15,7 @@
 <div *ngIf="searchBool && validMovie" class="movieOutput" (click)="movieSelected(filmTitle.innerHTML, filmID.innerHTML)">
   <div class="row">
     <div class="col-md-4"><img class="img-responsive moviePoster" [src]=[film.Poster]/></div>
+    <!-- <h6 style="display: none;" #posterSpan>{{film.Poster}}</h6> -->
     <div class="col-md-8 movieInfoBox">
       <h2 #filmTitle>{{film.Title+" ("+film.Year+")"}}</h2>
       <h5 class="grayText">{{"Director: "+film.Director}}</h5>
@@ -32,15 +33,23 @@
 <hr>
 
 <!-- Reviewed Movies -->
-<button (click)="showAllMovies()">Show Movies With Reviews</button>
-<h3 *ngIf="filmReviewBool"> ==>
-  <ul>
-    <li style="cursor: pointer;" #testVal (click)="movieSelected('TEST', testVal.innerHTML)" *ngFor="let rev of filmReviews">{{rev.imdbId}}</li>
-  </ul>
+<h2 class="text-center">Already Reviewed Movies</h2>
+<!-- <button (click)="showReviewedMovies()">Show Movies With Reviews</button> -->
+<div *ngIf="filmReviewBool" style="max-width: 800px; margin: 0 auto;"> 
+  <!-- <ul> -->
+    <div class="row">
+        <div style="padding: 25px;" class="revMovList col-sm-4" (click)="movieSelected('TEST', testVal.innerHTML)" *ngFor="let rev of filmReviewsAll">
+          <img width="100%" [src]=[rev.imageUrl]/><span style="display: none;" #testVal>{{rev.imdbId}}</span>
+        </div>
+    </div>
+    
+  <!-- </ul> -->
 
-  <==
-</h3>
+  
+  </div>
 <!-- End Reviewed Movies -->
+
+
 
 
 
@@ -56,6 +65,11 @@
 <!-- End Sample Comment Display -->
 
 
+
+
+
+<!-- Popup stuff -->
+
 <div id="darkBackground" *ngIf="popupShow" (click)="closePopup()"></div>
 <div id="popup" *ngIf="popupShow">
   <h1 id="closePopupX" (click)="closePopup()">X</h1>
@@ -70,7 +84,7 @@
   <div class="row reviewRow" *ngIf="loggedIn">
     <div class="col-md-7">
       <input #newReviewText type="text" class="form-control" placeholder="Write Review.."/>
-    </div>
+    </div> 
     <div class="col-md-3">
       <div style="margin-top: 4px; width: 150px; margin: 0 auto;">
           <span class="fa fa-star {{starCount >= 1 ? 'checked' : ''}}" (click)="starCheck(1)"></span>
@@ -81,7 +95,8 @@
       </div>
       </div>
     <div class="col-md-2">
-      <button class="submitReviewBtn btn btn-block" (click)="submitReview(newReviewText.value)">Submit</button>  
+        <h6 style="display: none;" #posterSpan>{{film.Poster}}</h6> <!-- Sample -->
+      <button class="submitReviewBtn btn btn-block" (click)="submitReview(newReviewText.value, posterSpan.innerHTML)">Submit</button>  
     </div>
   </div>
   <div class="text-center" *ngIf="!loggedIn">

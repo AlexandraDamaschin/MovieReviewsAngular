@@ -23,6 +23,8 @@ export class NewMovieReviewComponent implements OnInit {
 
   film: Movie;
   filmReviews: MovieReview;
+  filmReviewsAll: MovieReview;
+
   filmReviewBool: boolean = false;
 
   errorMessage: string;
@@ -39,35 +41,39 @@ export class NewMovieReviewComponent implements OnInit {
   loggedIn: boolean;
 
   constructor(
-    private _movieService: MovieService, 
-    private _customApiService: CustomApiService,
-    private authService: AuthService) {
-      this.findMovieStart("brooklyn");
+      private _movieService: MovieService, 
+      private _customApiService: CustomApiService,
+      private authService: AuthService) {
+        this.findMovieStart("brooklyn");
      }
 
-    showAllMovies(){
-      let self = this; // getReviews(movId) *****
-      self._customApiService.getReviews('')
-        .subscribe(response => this.filmReviews = response, error => this.errorMessage = <any>error);
-      console.log("***** Method finished. movId: ");
-      this.filmReviewBool = true;
-    }
+  showReviewedMovies(){ // Make distinct
+    let self = this; // getReviews(movId) *****
+    self._customApiService.getReviews('')
+    .subscribe(response => this.filmReviewsAll = response, error => this.errorMessage = <any>error);
+    console.log("***** Method finished. movId: " + "ALL");
+
+    this.filmReviewBool = true;
+  }
 
   callCustomAPI(movId) {
     let self = this; // getReviews(movId) *****
+
     self._customApiService.getReviews(movId)
-      .subscribe(response => this.filmReviews = response, error => this.errorMessage = <any>error);
+    .subscribe(response => this.filmReviews = response, error => this.errorMessage = <any>error);
     console.log("***** Method finished. movId: " + movId);
+
     this.filmReviewBool = true;
   }
 
 
   newFilmReview: MovieReview; 
-  submitReview(comment) {
+  submitReview(comment, img) {
     if(comment == "")
       return false;
+
     //TODO: UserID, ReviewID??, Refresh New Comment ***
-    this.newFilmReview = new MovieReview(10, 10,this.film.imdbID, comment, null, this.starCount);
+    this.newFilmReview = new MovieReview(10, 10, this.film.imdbID, comment, null, this.starCount, img);
 
     this._customApiService.createReview(this.newFilmReview)
       .subscribe(
@@ -80,8 +86,9 @@ export class NewMovieReviewComponent implements OnInit {
 
     console.log(comment + " recorded for film: " + this.film.imdbID);
 
-    alert("Review submitted!");
     this.popupShow = false;
+    document.getElementsByTagName("body")[0].style.overflow = "auto";
+    alert("Review submitted!");
   }
 
   // callCustomAPI_ID(movId) {
@@ -133,6 +140,8 @@ export class NewMovieReviewComponent implements OnInit {
       this.user = user;
       this.loggedIn = (user != null); // Checks if logged in
     });
+
+    this.showReviewedMovies();
   }
 
 }

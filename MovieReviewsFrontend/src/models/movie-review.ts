@@ -3,8 +3,9 @@ export class MovieReview {
     userID: number;
     imdbId: string;
     reviewComment: string;
-    dateCreated: DateTimeFormat;
+    dateCreated: DateTimeFormat;    
     starRating: number;
+    imageUrl: string;
 
     constructor(
         reviewId: number,
@@ -12,7 +13,8 @@ export class MovieReview {
         imdbId: string,
         reviewComment: string,
         dateCreated: DateTimeFormat,
-        starRating: number) {
+        starRating: number,
+        imageUrl: string) {
 
         this.reviewId = reviewId;
         this.userID = userID;
@@ -20,5 +22,6 @@ export class MovieReview {
         this.reviewComment = reviewComment;
         this.dateCreated = dateCreated;
         this.starRating = starRating;
+        this.imageUrl = imageUrl;
     }
 }

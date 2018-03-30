@@ -3,13 +3,14 @@ export class Movie {
     Title: string;
     Year: number;
     Rated: string;
-    Poster: string;
+    ImageUrl: string;
     Plot: string;
     Director: string;
     Actors: string;
 
-    constructor(movieID: string, title: string){
+    constructor(movieID: string, title: string, ImageUrl: string){
         this.imdbID = movieID;
         this.Title = title;
+        this.ImageUrl = ImageUrl;
     }
 }
