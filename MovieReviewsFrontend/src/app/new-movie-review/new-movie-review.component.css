@@ -77,7 +77,9 @@ ul {
 }
 
 .checked {
-    color: rgb(247, 231, 16);
+    /* color: rgb(247, 231, 16); */
+    /* color: rgb(18, 99, 250); */
+    color: rgb(54, 54, 54);
 }
 
 #prevComments {
