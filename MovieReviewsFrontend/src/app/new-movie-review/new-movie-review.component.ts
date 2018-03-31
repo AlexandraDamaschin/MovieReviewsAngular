@@ -96,10 +96,10 @@ export class NewMovieReviewComponent implements OnInit {
       }
     });
     if(count > 1){
-      return false;
+      return true;
     }
     else {
-      return true; // isnt a dupe      
+      return false; // isnt a dupe      
     }
  }
 
