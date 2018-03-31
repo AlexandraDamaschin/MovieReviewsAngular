@@ -13,7 +13,8 @@ export class CustomApiService {
 
     private urlBaseID: string = StringList.CUSTOM_API_BASE_ID;
     private urlBaseALL: string = StringList.CUSTOM_API_BASE_ALL;
-    private putUrl: string = StringList.CUSTOM_API_BASE_POST;
+    private postUrl: string = StringList.CUSTOM_API_BASE_POST;
+    private putUrl: string = "http://localhost:63548/api/Reviews/UpdateReview/";
 
     private temp: Observable<MovieReview>;
     private temp2: Observable<MovieReview>;
@@ -24,7 +25,11 @@ export class CustomApiService {
 
     // Creates a new review through our Custom API
     createReview(review: MovieReview) {
-        return this.http.post(this.putUrl, review);
+        return this.http.post(this.postUrl, review);
+    }
+
+    updateReview(review: MovieReview){
+        return this.http.put((this.putUrl + review.reviewId), review);
     }
 
     // Gets reviews from our Custom API. 

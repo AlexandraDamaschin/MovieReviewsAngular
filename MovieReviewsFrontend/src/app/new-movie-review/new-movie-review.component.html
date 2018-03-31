@@ -80,7 +80,7 @@
       
         <!-- <p>Poster: {{tempMovPoster}}</p> -->
         <div id="prevComments">
-          <app-review-comment-line *ngFor="let rev of filmReviews" [review]="rev"></app-review-comment-line>
+          <app-review-comment-line *ngFor="let rev of filmReviews" [review]="rev" [loggedIn]="loggedIn"></app-review-comment-line>
         </div>
     </div>
   </div>

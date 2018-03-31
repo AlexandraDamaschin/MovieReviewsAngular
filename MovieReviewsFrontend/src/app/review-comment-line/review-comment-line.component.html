@@ -1,9 +1,27 @@
 <!-- Star rating beside movie comment -->
-<p><em> "{{ review.reviewComment }}" 
+<div><em> 
+  <span [hidden]="showEditor" style="cursor: pointer;" (click)="editorToggle('T')">"{{ review.reviewComment }}"</span>
+
+  <span [hidden]="!showEditor"><input #newReview type="text" value="{{ review.reviewComment }}"/></span>
+
   - 
-    <span class="fa fa-star {{review.starRating >= 1 ? 'checked' : ''}}"></span>
-    <span class="fa fa-star {{review.starRating >= 2 ? 'checked' : ''}}"></span>
-    <span class="fa fa-star {{review.starRating >= 3 ? 'checked' : ''}}"></span>
-    <span class="fa fa-star {{review.starRating >= 4 ? 'checked' : ''}}"></span>
-    <span class="fa fa-star {{review.starRating >= 5 ? 'checked' : ''}}"></span>
-</em></p>
+  <div style="display: inline;" [hidden]="showEditor" (click)="editorToggle('T')">
+      <span class="fa fa-star {{review.starRating >= 1 ? 'checked' : ''}}"></span>
+      <span class="fa fa-star {{review.starRating >= 2 ? 'checked' : ''}}"></span>
+      <span class="fa fa-star {{review.starRating >= 3 ? 'checked' : ''}}"></span>
+      <span class="fa fa-star {{review.starRating >= 4 ? 'checked' : ''}}"></span>
+      <span class="fa fa-star {{review.starRating >= 5 ? 'checked' : ''}}"></span>
+  </div>
+
+
+  <div style="display: inline;" [hidden]="!showEditor">
+      <span class="fa fa-star {{starCount >= 1 ? 'checked2' : ''}}" (click)="starCheck(1)"></span>
+      <span class="fa fa-star {{starCount >= 2 ? 'checked2' : ''}}" (click)="starCheck(2)"></span>
+      <span class="fa fa-star {{starCount >= 3 ? 'checked2' : ''}}" (click)="starCheck(3)"></span>
+      <span class="fa fa-star {{starCount >= 4 ? 'checked2' : ''}}" (click)="starCheck(4)"></span>
+      <span class="fa fa-star {{starCount >= 5 ? 'checked2' : ''}}" (click)="starCheck(5)"></span> 
+  </div>
+
+  <button [hidden]="!showEditor" (click)="updateReview(review.reviewId, newReview.value)">Update</button>
+
+</em></div>
