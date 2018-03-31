@@ -1,27 +1,42 @@
 <!-- Star rating beside movie comment -->
-<div><em> 
-  <span [hidden]="showEditor" style="cursor: pointer;" (click)="editorToggle('T')">"{{ review.reviewComment }}"</span>
+<div style="max-width: 500px;"><em> 
+    <div class="row">
+        <div class="col-sm-5">
+            <span [hidden]="showEditor" style="cursor: pointer;" (click)="editorToggle('T')">"{{ review.reviewComment }}"</span>
+            <span [hidden]="!showEditor"><input style="border-radius: 2px; border: 1px solid rgb(175, 175, 175);" #newReview type="text" value="{{ review.reviewComment }}"/></span>
+        </div>
+        - 
+        <div class="col-sm-4">
+            <div style="display: inline;" [hidden]="showEditor" (click)="editorToggle('T')">
+                <span class="fa fa-star {{review.starRating >= 1 ? 'checked' : ''}}"></span>
+                <span class="fa fa-star {{review.starRating >= 2 ? 'checked' : ''}}"></span>
+                <span class="fa fa-star {{review.starRating >= 3 ? 'checked' : ''}}"></span>
+                <span class="fa fa-star {{review.starRating >= 4 ? 'checked' : ''}}"></span>
+                <span class="fa fa-star {{review.starRating >= 5 ? 'checked' : ''}}"></span>
+            </div>
+            
+            
+            <div style="display: inline;" [hidden]="!showEditor">
+                <span class="fa fa-star {{starCount >= 1 ? 'checked2' : ''}}" (click)="starCheck(1)"></span>
+                <span class="fa fa-star {{starCount >= 2 ? 'checked2' : ''}}" (click)="starCheck(2)"></span>
+                <span class="fa fa-star {{starCount >= 3 ? 'checked2' : ''}}" (click)="starCheck(3)"></span>
+                <span class="fa fa-star {{starCount >= 4 ? 'checked2' : ''}}" (click)="starCheck(4)"></span>
+                <span class="fa fa-star {{starCount >= 5 ? 'checked2' : ''}}" (click)="starCheck(5)"></span> 
+            </div>
+        </div>
 
-  <span [hidden]="!showEditor"><input #newReview type="text" value="{{ review.reviewComment }}"/></span>
+        <div class="col-sm-2">
+            <div class="row">
+                <div class="col-6">
+                    <button class="updBtn" [hidden]="!showEditor" (click)="updateReview(review.reviewId, newReview.value)"><i class="fa fa-check"></i></button>
+                </div>
 
-  - 
-  <div style="display: inline;" [hidden]="showEditor" (click)="editorToggle('T')">
-      <span class="fa fa-star {{review.starRating >= 1 ? 'checked' : ''}}"></span>
-      <span class="fa fa-star {{review.starRating >= 2 ? 'checked' : ''}}"></span>
-      <span class="fa fa-star {{review.starRating >= 3 ? 'checked' : ''}}"></span>
-      <span class="fa fa-star {{review.starRating >= 4 ? 'checked' : ''}}"></span>
-      <span class="fa fa-star {{review.starRating >= 5 ? 'checked' : ''}}"></span>
-  </div>
-
-
-  <div style="display: inline;" [hidden]="!showEditor">
-      <span class="fa fa-star {{starCount >= 1 ? 'checked2' : ''}}" (click)="starCheck(1)"></span>
-      <span class="fa fa-star {{starCount >= 2 ? 'checked2' : ''}}" (click)="starCheck(2)"></span>
-      <span class="fa fa-star {{starCount >= 3 ? 'checked2' : ''}}" (click)="starCheck(3)"></span>
-      <span class="fa fa-star {{starCount >= 4 ? 'checked2' : ''}}" (click)="starCheck(4)"></span>
-      <span class="fa fa-star {{starCount >= 5 ? 'checked2' : ''}}" (click)="starCheck(5)"></span> 
-  </div>
-
-  <button [hidden]="!showEditor" (click)="updateReview(review.reviewId, newReview.value)">Update</button>
-
+                <div class="col-6">
+                    <button class="cncBtn" [hidden]="!showEditor" (click)="editorToggle()"><i class="fa fa-times"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
 </em></div>
+
+<hr>

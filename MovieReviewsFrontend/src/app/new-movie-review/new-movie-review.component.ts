@@ -61,13 +61,20 @@ export class NewMovieReviewComponent implements OnInit {
     self._customApiService.getReviews('')
     .subscribe(response => this.filmReviewsAll = response, error => this.errorMessage = <any>error);
     
-    let filmReviewsAll = Array.from(new Set(Array(this.filmReviewsAll)));//...this should work
+    //let filmReviewsAll = Array.from(new Set(Array(this.filmReviewsAll)));//...this should work
 
-    /*var newvar = Array(this.filmReviewsAll).length;
-    for (let i = 0; i < Array(this.filmReviewsAll).length; i++) {
-      const element = Array(this.filmReviewsAll)[i];
-      
-    }//nested for loops comparing*/
+  //var newvar = Array(this.filmReviewsAll).length;
+  
+  
+  for (let i = 0; i < Array(this.filmReviewsAll).length; i++) {
+      const element1 = Array(this.filmReviewsAll)[i];
+      for (let j = 0; j < Array(this.filmReviewsAll).length; j++) {
+        const element2 = Array(this.filmReviewsAll)[j];
+        if(element1 == element2){
+          Array(this.filmReviewsAll).splice(j, j+1);
+        }
+      }
+    }//nested for loops comparing
 
     //var uniqEs6 = (filmReviewsAll) => filmReviewsAll.filter((elem, pos, arr) => arr.indexOf(elem) == pos);
     //this.filmReviewsAll = Set(data.map(elt => elt.metadata.currency).filter(Boolean));
