@@ -1,4 +1,4 @@
-import { Credentials } from 'crypto';
+//import { Credentials } from 'crypto';
 import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { AuthService } from "angular4-social-login";
 import { FacebookLoginProvider, GoogleLoginProvider } from "angular4-social-login";
@@ -60,7 +60,7 @@ export class LoginComponent implements OnInit {
         .subscribe(
         result => {         
           if (result) {
-             this.router.navigate(['profile']);             
+             this.router.navigate(['/home']);             
           }
         },
         error => this.errors = error);
@@ -111,7 +111,7 @@ export class LoginComponent implements OnInit {
         .subscribe(
           result => {
             if (result) {
-              this.router.navigate(['/login'], { queryParams: { brandNew: true, email: em } });
+              this.router.navigate(['/home'], { queryParams: { brandNew: true, email: em } });
             }
           },
           errors => this.errors = errors);
