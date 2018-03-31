@@ -57,7 +57,7 @@ export class UserServiceService extends BaseService {
 
     return this.http
       .post(
-        this.baseUrl + 'api/Account/AddExternalLogin',
+        this.baseUrl + 'api/Account/AddExternalLogin', //Wrong URL to login? No other URL seems to be right
         JSON.stringify({ userName, password, ConfirmPassword }), { headers }
       )
       .map(res => res.json())

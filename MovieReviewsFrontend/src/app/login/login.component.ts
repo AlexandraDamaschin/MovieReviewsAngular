@@ -38,8 +38,26 @@ export class LoginComponent implements OnInit {
   // Login ***
   login(username, password) {
     console.log("username --> " + username + " . password --> " + password);
+
+    if (this.loginShow) {
+      // Make sure the login page is shown
+
+    this.submitted = true;
+    this.isRequesting = true;
+    this.errors = '';
+
+    this.userService.login(username, password, password)
+    .finally(() => this.isRequesting = false)
+    .subscribe(
+      result => {
+        if (result) {
+          this.router.navigate(['/home'], { queryParams: { } });
+        }
+      },
+      errors => this.errors = errors);
     return false; // Remove this for successful submit, this is here for dev only.
   }
+}
 
   //google login
   signInWithGoogle(): void {
