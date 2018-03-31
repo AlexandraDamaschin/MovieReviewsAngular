@@ -54,7 +54,7 @@
 <div *ngIf="filmReviewBool" class="revMovieContainer"> 
     <div class="row">
         <div style="padding: 25px;" class="revMovList col-sm-4" *ngFor="let rev of filmReviewsAll">
-          <img *ngIf="isntDupe(rev)" height="100%" class="revImage" [src]=[rev.imageUrl] (click)="movieSelected('DISABLE_COMMENTS', uniqueId.innerHTML, rev.imageUrl)"/><span style="display: none;" #uniqueId>{{rev.imdbId}}</span>
+          <img height="100%" class="revImage" [src]=[rev.imageUrl] (click)="movieSelected('DISABLE_COMMENTS', uniqueId.innerHTML, rev.imageUrl)"/><span style="display: none;" #uniqueId>{{rev.imdbId}}</span>
         </div>
     </div>
 </div>

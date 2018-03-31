@@ -87,7 +87,7 @@ export class NewMovieReviewComponent implements OnInit {
     this.filmReviewBool = true;
   }
 
-  isntDupe(item){
+  /*isntDupe(item){
     var count = 0;
     Array(this.filmReviewsAll).forEach(element => {
       if (element == item)
@@ -101,7 +101,7 @@ export class NewMovieReviewComponent implements OnInit {
     else {
       return false; // isnt a dupe      
     }
- }
+ }*/
 
 
   // Gets review by ImdbID
