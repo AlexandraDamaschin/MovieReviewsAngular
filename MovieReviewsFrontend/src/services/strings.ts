@@ -8,4 +8,5 @@ export class StringList{
     public static CUSTOM_API_BASE_ALL : string = "http://localhost:63548/api/reviews/getreviews/"; 
     public static CUSTOM_API_BASE_ID : string = "http://localhost:63548/api/reviews/getreviewmovie/"; 
     public static CUSTOM_API_BASE_POST : string = "http://localhost:63548/api/reviews/createreview/"; 
+    public static CUSTOM_API_BASE_PUT : string = "http://localhost:63548/api/Reviews/UpdateReview/"; 
 }
