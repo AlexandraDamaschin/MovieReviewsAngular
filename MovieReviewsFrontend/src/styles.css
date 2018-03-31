@@ -2,7 +2,10 @@
 @import "~bootstrap/dist/css/bootstrap.min.css";
 
 body {
-    background-color: #fcfcfc;
+    /* background-color: #fcfcfc; */
+    background: url("./assets/Images/bg.jpg");
+    background-attachment: fixed;
+    background-size: 200px;
     overflow-x: hidden;
     font-family: 'Oxygen', sans-serif;
 }
