@@ -30,7 +30,7 @@ export class NewMovieReviewComponent implements OnInit {
   filmReviewsAll: MovieReview;
   filmReviewBool: boolean = false;
   newFilmReview: MovieReview; 
-  //filmReviewsAllNoDuplicates: MovieReview;
+  filmReviewsAllNoDuplicates: MovieReview;
   // Movie Vars
   selMovieTitle: string;
   selMovieID: string;
@@ -61,8 +61,13 @@ export class NewMovieReviewComponent implements OnInit {
     self._customApiService.getReviews('')
     .subscribe(response => this.filmReviewsAll = response, error => this.errorMessage = <any>error);
     
-    //let filmReviewsAllNoDuplicates = Array.from(new Set(this.filmReviewsAll));//...this should work
+    let filmReviewsAllNoDuplicates = Array.from(new Set(Array(this.filmReviewsAll)));//...this should work
 
+    /*var newvar = Array(this.filmReviewsAll).length;
+    for (let i = 0; i < Array(this.filmReviewsAll).length; i++) {
+      const element = Array(this.filmReviewsAll)[i];
+      
+    }//nested for loops comparing*/
 
     //var uniqEs6 = (filmReviewsAll) => filmReviewsAll.filter((elem, pos, arr) => arr.indexOf(elem) == pos);
     //this.filmReviewsAll = Set(data.map(elt => elt.metadata.currency).filter(Boolean));
