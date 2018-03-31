@@ -48,7 +48,7 @@ export class RegisterComponent implements OnInit {
         .subscribe(
           result => {
             if (result) {
-              this.router.navigate(['/login'], {
+              this.router.navigate(['/home'], {
                 queryParams: { brandNew: true, email: value.email }
               });
             }
