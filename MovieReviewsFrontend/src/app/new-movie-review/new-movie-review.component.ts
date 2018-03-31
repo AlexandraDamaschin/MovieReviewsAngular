@@ -65,7 +65,7 @@ export class NewMovieReviewComponent implements OnInit {
 
   //var newvar = Array(this.filmReviewsAll).length;
   
-  
+  /*
   for (let i = 0; i < Array(this.filmReviewsAll).length; i++) {
       const element1 = Array(this.filmReviewsAll)[i];
       for (let j = 0; j < Array(this.filmReviewsAll).length; j++) {
@@ -75,6 +75,7 @@ export class NewMovieReviewComponent implements OnInit {
         }
       }
     }//nested for loops comparing
+  */
 
     //var uniqEs6 = (filmReviewsAll) => filmReviewsAll.filter((elem, pos, arr) => arr.indexOf(elem) == pos);
     //this.filmReviewsAll = Set(data.map(elt => elt.metadata.currency).filter(Boolean));
@@ -85,6 +86,22 @@ export class NewMovieReviewComponent implements OnInit {
 
     this.filmReviewBool = true;
   }
+
+  isntDupe(item){
+    var count = 0;
+    Array(this.filmReviewsAll).forEach(element => {
+      if (element == item)
+      {
+        count++;
+      }
+    });
+    if(count > 1){
+      return false;
+    }
+    else {
+      return true; // isnt a dupe      
+    }
+ }
 
 
   // Gets review by ImdbID
