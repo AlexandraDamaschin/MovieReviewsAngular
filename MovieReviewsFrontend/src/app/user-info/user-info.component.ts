@@ -16,7 +16,10 @@ export class UserInfoComponent implements OnInit {
   public user: SocialUser;
   public loggedIn: boolean;
 
-  constructor(private authService: AuthService, private router: Router, public toastr: ToastsManager, vcr: ViewContainerRef) {
+  constructor(public authService: AuthService, 
+    public router: Router,
+     public toastr: ToastsManager, 
+     vcr: ViewContainerRef) {
     this.toastr.setRootViewContainerRef(vcr);
    }
 

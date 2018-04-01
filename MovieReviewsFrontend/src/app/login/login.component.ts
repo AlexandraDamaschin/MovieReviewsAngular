@@ -23,11 +23,11 @@ export class LoginComponent implements OnInit {
   submitted: boolean = false;
   loginShow: boolean = true;
 
-  constructor( private authService: AuthService, 
+  constructor( public authService: AuthService, 
     public toastr: ToastsManager, 
     vcr: ViewContainerRef,
-    private userService: UserServiceService,
-    private router: Router,) { 
+    public userService: UserServiceService,
+    public router: Router,) { 
     this.toastr.setRootViewContainerRef(vcr);
   }
 

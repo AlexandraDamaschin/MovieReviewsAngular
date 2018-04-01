@@ -17,8 +17,8 @@ export class ReviewCommentLineComponent implements OnInit {
   public starCount: number;
 
   constructor(
-    private _movieService: MovieService, 
-    private _customApiService: CustomApiService,) { }
+    public _movieService: MovieService, 
+    public _customApiService: CustomApiService,) { }
 
 
   editorToggle(val){

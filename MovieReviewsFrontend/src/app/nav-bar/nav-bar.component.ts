@@ -19,8 +19,8 @@ export class NavBarComponent implements OnInit {
   public loggedIn: boolean;
 
   constructor(
-    private authService: AuthService, 
-    private router: Router, 
+    public authService: AuthService, 
+    public router: Router, 
     public toastr: ToastsManager, 
     vcr: ViewContainerRef) { 
       this.toastr.setRootViewContainerRef(vcr);

@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
   // private show: boolean = true;
 
   constructor(
-    private authService: AuthService, 
+    public authService: AuthService, 
     public toastr: ToastsManager, 
     vcr: ViewContainerRef) { 
       // this.toastr.setRootViewContainerRef(vcr);

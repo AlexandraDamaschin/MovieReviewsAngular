@@ -46,9 +46,9 @@ export class NewMovieReviewComponent implements OnInit {
 
 
   constructor(
-      private _movieService: MovieService, 
-      private _customApiService: CustomApiService,
-      private authService: AuthService) {
+    public _movieService: MovieService, 
+    public _customApiService: CustomApiService,
+    public authService: AuthService) {
         this.findMovieStart("brooklyn");
      }
 
