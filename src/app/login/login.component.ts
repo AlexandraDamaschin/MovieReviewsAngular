@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 
 import { UserRegistration } from '../../services/user.registration';
 import { UserServiceService } from '../../services/user.registration.service';
+import { Credentials } from '../../models/credentials';
 
 // import { validate } from 'codelyzer/walkerFactory/walkerFn';
 
@@ -35,29 +36,46 @@ export class LoginComponent implements OnInit {
     document.getElementsByTagName("body")[0].style.overflow = "auto";
   }
 
-  // Login ***
-  login(username, password) {
-    console.log("username --> " + username + " . password --> " + password);
-
-    if (this.loginShow) {
-      // Make sure the login page is shown
-
+  login({ value, valid }: { value: Credentials, valid: boolean }, em, pass) {
     this.submitted = true;
     this.isRequesting = true;
     this.errors = '';
-
-    this.userService.login(username, password, password)
-    .finally(() => this.isRequesting = false)
-    .subscribe(
-      result => {
-        if (result) {
-          this.router.navigate(['/home'], { queryParams: { } });
-        }
-      },
-      errors => this.errors = errors);
-    return false; // Remove this for successful submit, this is here for dev only.
+    if (valid) {
+      this.userService.login(em, pass, pass)
+        .finally(() => this.isRequesting = false)
+        .subscribe(
+          result => {
+            if (result) {
+              this.router.navigate(['/dashboard/home']);
+            }
+          },
+          error => this.errors = error);
+    }
   }
-}
+
+  // Login ***
+//   login(username, password) {
+//     console.log("username --> " + username + " . password --> " + password);
+
+//     if (this.loginShow) {
+//       // Make sure the login page is shown
+
+//     this.submitted = true;
+//     this.isRequesting = true;
+//     this.errors = '';
+
+//     this.userService.login(username, password, password)
+//     .finally(() => this.isRequesting = false)
+//     .subscribe(
+//       result => {
+//         if (result) {
+//           this.router.navigate(['/home'], { queryParams: { } });
+//         }
+//       },
+//       errors => this.errors = errors);
+//     return false; // Remove this for successful submit, this is here for dev only.
+//   }
+// }
 
   //google login
   signInWithGoogle(): void {

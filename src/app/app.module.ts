@@ -73,7 +73,8 @@ export function provideConfig() {
     SocialLoginModule,
     HttpModule,
     BrowserAnimationsModule,
-    ToastModule.forRoot()
+    ToastModule.forRoot(),
+    FormsModule
   ],
   providers: [
     ConfigService,
