@@ -36,12 +36,6 @@ export class RegisterComponent implements OnInit {
     this.submitted = true;
     this.isRequesting = true;
     this.errors = '';
-
-    if(value.password != value.ConfirmPassword) {
-      alert("Passwords must match!");
-      return false;
-    }
-
     if (valid) {
       this.userService.register(value.email, value.password, value.ConfirmPassword, value.username)
         .finally(() => this.isRequesting = false)
