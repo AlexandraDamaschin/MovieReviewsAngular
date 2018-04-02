@@ -51,6 +51,8 @@ export class LoginComponent implements OnInit {
           },
           error => this.errors = error);
     }
+
+    console.log("Login(f, " + em + ", " + pass + ")");
   }
 
   // Login ***
