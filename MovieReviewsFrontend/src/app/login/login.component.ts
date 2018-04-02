@@ -1,4 +1,3 @@
-import { SocialUser } from 'angular4-social-login/entities';
 /*import { Component, OnInit } from '@angular/core';
 import {  } from '../../services/user-service.service'
 @Component({
@@ -67,8 +66,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Credentials } from '../../models/credentials';
 import { UserServiceService } from '../../services/user-service.service';
 
-import { AuthService } from "angular4-social-login";
-import { FacebookLoginProvider, GoogleLoginProvider } from "angular4-social-login";
+
 import { tokenNotExpired } from 'angular2-jwt';
 
 
@@ -92,19 +90,14 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   authToken: any;
   user: any;
-  User: SocialUser;
-  LoggedIn: boolean;
+
   constructor(
     private userService: UserServiceService,
     private router: Router,
-    private activatedRoute: ActivatedRoute,
-    private authService: AuthService
+    private activatedRoute: ActivatedRoute
   ) { }
 
-  ngOnInit(){
-    this.authService.authState.subscribe((User) => {
-    this.User = User;
-    this.LoggedIn = (User != null);}) ;
+  ngOnInit() {
 
     // subscribe to router event
     this.subscription = this.activatedRoute.queryParams.subscribe(
@@ -136,22 +129,10 @@ export class LoginComponent implements OnInit, OnDestroy {
     }
   }
 
-  
-
-  //google login
-  signInWithGoogle(): void {
-    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
-    console.log("signInWithGoogle");
-  }
-
-  //fb login
-  signInWithFB(): void {
-    this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
-    console.log("signInWithFB");
-  }
 
 
 
+//edit for git
   //store data of users  as JSON
   storeUserData(token, email, password, ConfirmPassword) {
     localStorage.setItem('auth_token', token);

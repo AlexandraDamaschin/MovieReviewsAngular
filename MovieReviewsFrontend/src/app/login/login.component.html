@@ -1,5 +1,4 @@
 <div id="wrap">
-    
     <form ng-submit="formSubmit()" class="form" #f="ngForm"  novalidate (ngSubmit)="login(f)">
       <div class="form-group" *ngIf="!loginShow">
           <input type="text" class="form-control" ng-model="username" placeholder="Username" required="" />
@@ -23,21 +22,33 @@
 
     <div class="row socialDiv" *ngIf="!loginShow">
       <div class="col-sm-3">
-        <div class="btnSocial" (click)="signInWithGoogle()">
+        <div class="btnSocial" (click)="!socialLogin('google')">
           <i class="fa fa-google"></i>
         </div>
       </div>
       <div class="col-sm-3">
-        <div class="btnSocial" (click)="signInWithFB()">
+        <div class="btnSocial" (click)="!socialLogin('fb')">
           <i class="fa fa-facebook-square"></i>
         </div>
-      
+      </div>
+      <div class="col-sm-3">
+        <div class="btnSocial" (click)="!socialLogin('github')">
+          <i class="fa fa-github"></i>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="btnSocial" (click)="!socialLogin('twitter')">
+          <i class="fa fa-twitter"></i>
+        </div>
+      </div>
     </div>
 
     <br>
 
    
-    
+    <div class="row" *ngIf="loginShow">
+      <button class="btn btn-block btn-link" (click)="forgotPassword()">Forgot Password?</button>
+    </div>
 <!--
 </div>
 <div id="wrap">
