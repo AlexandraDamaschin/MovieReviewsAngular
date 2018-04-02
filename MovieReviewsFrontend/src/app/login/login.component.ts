@@ -1,4 +1,4 @@
-
+import { SocialUser } from 'angular4-social-login/entities';
 /*import { Component, OnInit } from '@angular/core';
 import {  } from '../../services/user-service.service'
 @Component({
@@ -59,7 +59,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(){ }
 }
 */
-import { SocialUser } from 'angular4-social-login/entities';
+
 import { Subscription } from 'rxjs';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
